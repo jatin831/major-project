@@ -1,0 +1,354 @@
+{
+  "contractName": "Structure",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Structure.sol\":\"Structure\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Structure.sol\":{\"keccak256\":\"0x029a17447c8c15490de47f450c1b3b835004222931e56b5d3d5ee485ba0ffaf4\",\"urls\":[\"bzz-raw://b649135db26bba9a8c73566e6af94fe2e5ca5c61c924b01f818f17b1fc8981e3\",\"dweb:/ipfs/QmWxtJK2K3bs1pttDGazoedZMKnQZPjSp4XFwxJdQAkYiK\"]}},\"version\":1}",
+  "bytecode": "0x60556023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a723158206a96310dd44de3f69a9789ebcd11ca43298d91d847e5dd4e0ed01257d0fa53a864736f6c63430005100032",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a723158206a96310dd44de3f69a9789ebcd11ca43298d91d847e5dd4e0ed01257d0fa53a864736f6c63430005100032",
+  "sourceMap": "37:164:1:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
+  "deployedSourceMap": "37:164:1:-;;;;;;;;",
+  "source": "pragma solidity >=0.4.21 <8.10.0;\r\n\r\nlibrary Structure {\r\n    struct Roles {\r\n        bool Manufacturer;\r\n        bool Distributor;\r\n        bool Delivery;\r\n        bool Vaccination_Center;\r\n    }\r\n\r\n}\r\n",
+  "sourcePath": "C:\\Users\\Yash Tayal\\Desktop\\Projects\\vaccine-distributtion-system\\contracts\\Structure.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Structure.sol",
+    "exportedSymbols": {
+      "Structure": [
+        48
+      ]
+    },
+    "id": 49,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 38,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<",
+          "8.10",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:33:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 48,
+        "linearizedBaseContracts": [
+          48
+        ],
+        "name": "Structure",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Structure.Roles",
+            "id": 47,
+            "members": [
+              {
+                "constant": false,
+                "id": 40,
+                "name": "Manufacturer",
+                "nodeType": "VariableDeclaration",
+                "scope": 47,
+                "src": "86:17:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 39,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "86:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 42,
+                "name": "Distributor",
+                "nodeType": "VariableDeclaration",
+                "scope": 47,
+                "src": "114:16:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 41,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "114:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 44,
+                "name": "Delivery",
+                "nodeType": "VariableDeclaration",
+                "scope": 47,
+                "src": "141:13:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 43,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "141:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 46,
+                "name": "Vaccination_Center",
+                "nodeType": "VariableDeclaration",
+                "scope": 47,
+                "src": "165:23:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 45,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "165:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Roles",
+            "nodeType": "StructDefinition",
+            "scope": 48,
+            "src": "62:134:1",
+            "visibility": "public"
+          }
+        ],
+        "scope": 49,
+        "src": "37:164:1"
+      }
+    ],
+    "src": "0:203:1"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/Structure.sol",
+      "exportedSymbols": {
+        "Structure": [
+          48
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.4",
+            ".21",
+            "<",
+            "8.10",
+            ".0"
+          ]
+        },
+        "id": 38,
+        "name": "PragmaDirective",
+        "src": "0:33:1"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            48
+          ],
+          "name": "Structure",
+          "scope": 49
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "Structure.Roles",
+              "name": "Roles",
+              "scope": 48,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "Manufacturer",
+                  "scope": 47,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 39,
+                    "name": "ElementaryTypeName",
+                    "src": "86:4:1"
+                  }
+                ],
+                "id": 40,
+                "name": "VariableDeclaration",
+                "src": "86:17:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "Distributor",
+                  "scope": 47,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 41,
+                    "name": "ElementaryTypeName",
+                    "src": "114:4:1"
+                  }
+                ],
+                "id": 42,
+                "name": "VariableDeclaration",
+                "src": "114:16:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "Delivery",
+                  "scope": 47,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 43,
+                    "name": "ElementaryTypeName",
+                    "src": "141:4:1"
+                  }
+                ],
+                "id": 44,
+                "name": "VariableDeclaration",
+                "src": "141:13:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "Vaccination_Center",
+                  "scope": 47,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 45,
+                    "name": "ElementaryTypeName",
+                    "src": "165:4:1"
+                  }
+                ],
+                "id": 46,
+                "name": "VariableDeclaration",
+                "src": "165:23:1"
+              }
+            ],
+            "id": 47,
+            "name": "StructDefinition",
+            "src": "62:134:1"
+          }
+        ],
+        "id": 48,
+        "name": "ContractDefinition",
+        "src": "37:164:1"
+      }
+    ],
+    "id": 49,
+    "name": "SourceUnit",
+    "src": "0:203:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2022-01-18T12:08:33.523Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
