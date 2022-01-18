@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./getWeb3";
 import SupplyChainContract from "./contracts/SupplyChain.json";
 import "./App.css";
@@ -12,7 +11,7 @@ class App extends Component {
 		web3: null,
 		accounts: null,
 		contract: null,
-		manufactureRole: null,
+		manufacturerRole: null,
 		distributorRole: null,
 		deliveryRole: null,
 		customerRole: null,
@@ -31,7 +30,7 @@ class App extends Component {
 				deployedNetwork && deployedNetwork.address
 			);
 
-			const manufactureRole = localStorage.getItem("manufactureRole");
+			const manufacturerRole = localStorage.getItem("manufacturerRole");
 			const distributorRole = localStorage.getItem("distributorRole");
 			const deliveryRole = localStorage.getItem("deliveryRole");
 			const customerRole = localStorage.getItem("customerRole");
@@ -41,7 +40,7 @@ class App extends Component {
 					web3,
 					accounts,
 					contract: instance,
-					manufactureRole: manufactureRole,
+					manufacturerRole: manufacturerRole,
 					distributorRole: distributorRole,
 					deliveryRole: deliveryRole,
 					customerRole: customerRole,
