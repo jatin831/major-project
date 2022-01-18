@@ -4,6 +4,8 @@ import getWeb3 from "./getWeb3";
 
 import "./App.css";
 import HomeScreen from "./screens/HomeScreen";
+import AdminPanelScreen from "./screens/AdminPanelScreen";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 class App extends Component {
   // state = { storageValue: 0, web3: null, accounts: null, contract: null };
@@ -53,8 +55,17 @@ class App extends Component {
     //   return <div>Loading Web3, accounts, and contract...</div>;
     // }
     return (
+            
       <div className="App">
-        <HomeScreen />
+        {/* <HomeScreen /> */}
+        {/* <AdminPanelScreen /> */}
+        <BrowserRouter>
+          <Switch>
+          <Route exact path="/home" component={HomeScreen} />
+          <Route exact path="/admin" component={AdminPanelScreen} />
+          <Redirect to="/home" />
+        </Switch>
+        </BrowserRouter>
       </div>
     );
   }
