@@ -8,75 +8,77 @@ import { useRole } from "../context/RoleDataContext";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-export default function AdminPanelScreen(props) {
+// export default
+function AdminPanelScreen(props) {
 	const accounts = props.accounts;
 	const supplyChainContract = props.supplyChainContract;
-	const { roles, setRoles } = useRole();
+
+	// const { roles, setRoles } = useRole();
 
 	const [manufacturerRole, setManufacturerRole] = React.useState("");
 	const [distributorRole, setDistributorRole] = React.useState("");
 	const [deliveryRole, setDeliveryRole] = React.useState("");
 	const [customerRole, setCustomerRole] = React.useState("");
 
-	const handleAddManufacturerRole = async () => {
-		await setRoles({
-			...roles,
-			manufacturer: manufacturerRole,
-		});
+	// const handleAddManufacturerRole = async () => {
+	// 	await setRoles({
+	// 		...roles,
+	// 		manufacturer: manufacturerRole,
+	// 	});
 
-		localStorage.setItem("manufacturerRole", manufacturerRole);
-		await supplyChainContract.methods
-			.addManufacturerRole(manufacturerRole)
-			.send({ from: accounts[0], gas: 100000 })
-			.then(console.log);
+	// 	localStorage.setItem("manufacturerRole", manufacturerRole);
+	// 	await supplyChainContract.methods
+	// 		.addManufacturerRole(manufacturerRole)
+	// 		.send({ from: accounts[0], gas: 100000 })
+	// 		.then(console.log);
 
-		setManufacturerRole("");
-	};
+	// 	setManufacturerRole("");
+	// };
 
-	const handleAddDistributorRole = async () => {
-		await setRoles({
-			...roles,
-			distributor: distributorRole,
-		});
+	// const handleAddDistributorRole = async () => {
+	// 	await setRoles({
+	// 		...roles,
+	// 		distributor: distributorRole,
+	// 	});
 
-		localStorage.setItem("distributorRole", distributorRole);
-		await supplyChainContract.methods
-			.addDistributorRole(distributorRole)
-			.send({ from: accounts[0], gas: 100000 })
-			.then(console.log);
+	// 	localStorage.setItem("distributorRole", distributorRole);
+	// 	await supplyChainContract.methods
+	// 		.addDistributorRole(distributorRole)
+	// 		.send({ from: accounts[0], gas: 100000 })
+	// 		.then(console.log);
 
-		setDistributorRole("");
-	};
+	// 	setDistributorRole("");
+	// };
 
-	const handleAddDeliveryRole = async () => {
-		await setRoles({
-			...roles,
-			delivery: deliveryRole,
-		});
+	// const handleAddDeliveryRole = async () => {
+	// 	await setRoles({
+	// 		...roles,
+	// 		delivery: deliveryRole,
+	// 	});
 
-		localStorage.setItem("deliveryRole", deliveryRole);
-		await supplyChainContract.methods
-			.addDeliveryRole(deliveryRole)
-			.send({ from: accounts[0], gas: 100000 })
-			.then(console.log);
+	// 	localStorage.setItem("deliveryRole", deliveryRole);
+	// 	await supplyChainContract.methods
+	// 		.addDeliveryRole(deliveryRole)
+	// 		.send({ from: accounts[0], gas: 100000 })
+	// 		.then(console.log);
 
-		setDeliveryRole("");
-	};
+	// 	setDeliveryRole("");
+	// };
 
-	const handleAddCustomerRole = async () => {
-		await setRoles({
-			...roles,
-			customer: customerRole,
-		});
+	// const handleAddCustomerRole = async () => {
+	// 	await setRoles({
+	// 		...roles,
+	// 		customer: customerRole,
+	// 	});
 
-		localStorage.setItem("customerRole", customerRole);
-		await supplyChainContract.methods
-			.addCustomerRole(customerRole)
-			.send({ from: accounts[0], gas: 100000 })
-			.then(console.log);
+	// 	localStorage.setItem("customerRole", customerRole);
+	// 	await supplyChainContract.methods
+	// 		.addCustomerRole(customerRole)
+	// 		.send({ from: accounts[0], gas: 100000 })
+	// 		.then(console.log);
 
-		setCustomerRole("");
-	};
+	// 	setCustomerRole("");
+	// };
 
 	const [role, setRole] = React.useState("");
 	const [open, setOpen] = React.useState(false);
@@ -134,7 +136,7 @@ export default function AdminPanelScreen(props) {
 				<Button
 					variant="contained"
 					color="primary"
-					onClick={handleAddManufacturerRole}
+					// onClick={handleAddManufacturerRole}
 					style={{ width: "20%", marginLeft: "10px" }}
 				>
 					Add Member
@@ -143,3 +145,4 @@ export default function AdminPanelScreen(props) {
 		</div>
 	);
 }
+export default AdminPanelScreen;
