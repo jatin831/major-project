@@ -1,67 +1,77 @@
-import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Navbar from '../components/NavbarWithoutButton';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import Button from '@mui/material/Button';
+import * as React from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+// import "../css/AdminPanelScreen.css";
+import Navbar from "../components/NavbarWithoutButton";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+// import Button from '@mui/material/Button';
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 export default function AdminPanelScreen() {
-  const [role, setRole] = React.useState('');
-  const [open, setOpen] = React.useState(false);
+	const [role, setRole] = React.useState("");
+	const [open, setOpen] = React.useState(false);
 
-  const handleChange = (event) => {
-    setRole(event.target.value);
-  };
+	const handleChange = (event) => {
+		setRole(event.target.value);
+	};
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+	const handleClose = () => {
+		setOpen(false);
+	};
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+	const handleOpen = () => {
+		setOpen(true);
+	};
 
-  return (
-    <div>
-            <Navbar />
-          <div className="homepage-container">
-
-              <form>
-  <label>
-    Enter Address:
-    <input type="text" name="name" size="50"/>
-  </label>
-  
-</form>
-              
-      <Button sx={{ display: 'block', mt: 2 }} onClick={handleOpen}>
-        Select Role to Assign
-      </Button>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-controlled-open-select-label">Role</InputLabel>
-        <Select
-          labelId="demo-controlled-open-select-label"
-          id="demo-controlled-open-select"
-          open={open}
-          onClose={handleClose}
-          onOpen={handleOpen}
-          value={role}
-          label="Role"
-          onChange={handleChange}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={1}>Manufacturer</MenuItem>
-          <MenuItem value={2}>Third Party</MenuItem>
-            <MenuItem value={3}>Delivery Hub</MenuItem>
-            <MenuItem value={4}>Customer</MenuItem>
-        </Select>
-              </FormControl>
-              <input type="submit" value="Submit" />
-          </div>
-          </div>
-  );
+	return (
+		<div>
+			<Navbar />
+			<h3>Add New Member to the Blockchain</h3>
+			<div className="homepage-container">
+				<form noValidate autoComplete="off">
+					<div>
+						<TextField
+							id="manufacturerRole"
+							label="Enter Address"
+							variant="outlined"
+							// value={manufacturerRole}
+							// onChange={(e) => setManufacturerRole(e.target.value)}
+							style={{ width: "500px" }}
+						/>
+					</div>
+				</form>
+				<FormControl sx={{ m: 1, minWidth: 120 }}>
+					<InputLabel id="demo-controlled-open-select-label">Role</InputLabel>
+					<Select
+						labelId="demo-controlled-open-select-label"
+						id="demo-controlled-open-select"
+						open={open}
+						onClose={handleClose}
+						onOpen={handleOpen}
+						value={role}
+						label="Role"
+						onChange={handleChange}
+					>
+						<MenuItem value="">
+							<em>None</em>
+						</MenuItem>
+						<MenuItem value={1}>Manufacturer</MenuItem>
+						<MenuItem value={2}>Distributor</MenuItem>
+						<MenuItem value={3}>Delivery</MenuItem>
+						<MenuItem value={4}>Vaccination Center</MenuItem>
+					</Select>
+				</FormControl>
+				<Button
+					variant="contained"
+					color="primary"
+					// onClick={handleAddManufacturerRole}
+					style={{ width: "20%", marginLeft: "10px" }}
+				>
+					Add Member
+				</Button>
+			</div>
+		</div>
+	);
 }
-
