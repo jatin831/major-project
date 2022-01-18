@@ -1,15 +1,83 @@
 import * as React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-// import "../css/AdminPanelScreen.css";
 import Navbar from "../components/NavbarWithoutButton";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-// import Button from '@mui/material/Button';
+import { useRole } from "../context/RoleDataContext";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-export default function AdminPanelScreen() {
+export default function AdminPanelScreen(props) {
+	const accounts = props.accounts;
+	const supplyChainContract = props.supplyChainContract;
+	const { roles, setRoles } = useRole();
+
+	const [manufacturerRole, setManufacturerRole] = React.useState("");
+	const [distributorRole, setDistributorRole] = React.useState("");
+	const [deliveryRole, setDeliveryRole] = React.useState("");
+	const [customerRole, setCustomerRole] = React.useState("");
+
+	const handleAddManufacturerRole = async () => {
+		await setRoles({
+			...roles,
+			manufacturer: manufacturerRole,
+		});
+
+		localStorage.setItem("manufacturerRole", manufacturerRole);
+		await supplyChainContract.methods
+			.addManufacturerRole(manufacturerRole)
+			.send({ from: accounts[0], gas: 100000 })
+			.then(console.log);
+
+		setManufacturerRole("");
+	};
+
+	const handleAddDistributorRole = async () => {
+		await setRoles({
+			...roles,
+			distributor: distributorRole,
+		});
+
+		localStorage.setItem("distributorRole", distributorRole);
+		await supplyChainContract.methods
+			.addDistributorRole(distributorRole)
+			.send({ from: accounts[0], gas: 100000 })
+			.then(console.log);
+
+		setDistributorRole("");
+	};
+
+	const handleAddDeliveryRole = async () => {
+		await setRoles({
+			...roles,
+			delivery: deliveryRole,
+		});
+
+		localStorage.setItem("deliveryRole", deliveryRole);
+		await supplyChainContract.methods
+			.addDeliveryRole(deliveryRole)
+			.send({ from: accounts[0], gas: 100000 })
+			.then(console.log);
+
+		setDeliveryRole("");
+	};
+
+	const handleAddCustomerRole = async () => {
+		await setRoles({
+			...roles,
+			customer: customerRole,
+		});
+
+		localStorage.setItem("customerRole", customerRole);
+		await supplyChainContract.methods
+			.addCustomerRole(customerRole)
+			.send({ from: accounts[0], gas: 100000 })
+			.then(console.log);
+
+		setCustomerRole("");
+	};
+
 	const [role, setRole] = React.useState("");
 	const [open, setOpen] = React.useState(false);
 
@@ -36,8 +104,8 @@ export default function AdminPanelScreen() {
 							id="manufacturerRole"
 							label="Enter Address"
 							variant="outlined"
-							// value={manufacturerRole}
-							// onChange={(e) => setManufacturerRole(e.target.value)}
+							value={manufacturerRole}
+							onChange={(e) => setManufacturerRole(e.target.value)}
 							style={{ width: "500px" }}
 						/>
 					</div>
@@ -54,7 +122,7 @@ export default function AdminPanelScreen() {
 						label="Role"
 						onChange={handleChange}
 					>
-						<MenuItem value="">
+						<MenuItem value={0}>
 							<em>None</em>
 						</MenuItem>
 						<MenuItem value={1}>Manufacturer</MenuItem>
@@ -66,7 +134,7 @@ export default function AdminPanelScreen() {
 				<Button
 					variant="contained"
 					color="primary"
-					// onClick={handleAddManufacturerRole}
+					onClick={handleAddManufacturerRole}
 					style={{ width: "20%", marginLeft: "10px" }}
 				>
 					Add Member
