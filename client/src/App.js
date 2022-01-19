@@ -7,6 +7,7 @@ import AdminPanelScreen from "./screens/AdminPanelScreen";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 class App extends Component {
+
   state = {
     web3: null,
     accounts: null,
@@ -16,6 +17,7 @@ class App extends Component {
     // deliveryRole: null,
     // customerRole: null,
   };
+
 
   componentDidMount = async () => {
     try {
@@ -29,6 +31,7 @@ class App extends Component {
         SupplyChainContract.abi,
         deployedNetwork && deployedNetwork.address
       );
+
 
       // const manufacturerRole = localStorage.getItem("manufacturerRole");
       // const distributorRole = localStorage.getItem("distributorRole");
@@ -52,6 +55,7 @@ class App extends Component {
       console.error(error);
     }
   };
+
 
   runExample = async () => {
     const { contract } = this.state;

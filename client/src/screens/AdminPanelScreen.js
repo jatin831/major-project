@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 
 // export default
 function AdminPanelScreen(props) {
+
   const accounts = props.accounts;
   const supplyChainContract = props.supplyChainContract;
   // const { roles, setRoles } = useRole();
@@ -168,5 +169,6 @@ function AdminPanelScreen(props) {
       </div>
     </div>
   );
+
 }
 export default AdminPanelScreen;
