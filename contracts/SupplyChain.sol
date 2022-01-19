@@ -14,7 +14,7 @@ contract SupplyChain {
         roles[_account].Distributor = true;
     }
 
-  function addDeliveryrRole(address _account) public {
+  function addDeliveryRole(address _account) public {
         roles[_account].Delivery = true;
     }
 
