@@ -5,7 +5,7 @@ library Structure {
         bool Manufacturer;
         bool Distributor;
         bool Delivery;
-        bool Vaccination_Center;
+        bool VaccinationCenter;
     }
 
 }

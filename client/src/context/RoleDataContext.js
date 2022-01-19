@@ -7,14 +7,14 @@ export const RoleDataContextProvider = ({
 	manufacturerRole,
 	distributorRole,
 	deliveryRole,
-	customerRole,
+	vaccinationCenterRole,
 	children,
 }) => {
 	const [roles, setRoles] = useState({
 		manufacturer: manufacturerRole,
 		distributor: distributorRole,
 		delivery: deliveryRole,
-		customer: customerRole,
+		vaccinationCenter: vaccinationCenterRole,
 	});
 
 	return (
