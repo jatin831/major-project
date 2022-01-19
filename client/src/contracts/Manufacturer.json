@@ -2204,12 +2204,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xc5eEc45a60C660E807fDd2dDA0b0fD01fC155b92",
-      "transactionHash": "0x7d65d256f5cc5d27dee3f55a0242c5fe110e52843c1445aba60ddc8fc302e1bd"
+      "address": "0x6D3eb1DF70f5ce534E46C4615fa641FBC25FAaA1",
+      "transactionHash": "0x9aff468e7c047d954fa52a8732d55cdcc299aa6203ae13c0f4f4fe26abaa18f6"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2022-01-19T06:57:47.211Z",
+  "updatedAt": "2022-01-19T07:11:58.200Z",
   "devdoc": {
     "methods": {
       "isManufacturer(address)": {

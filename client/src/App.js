@@ -14,7 +14,7 @@ class App extends Component {
 		manufacturerRole: null,
 		distributorRole: null,
 		deliveryRole: null,
-		customerRole: null,
+		vaccinationCenterRole: null,
 	};
 
 	componentDidMount = async () => {
@@ -33,7 +33,9 @@ class App extends Component {
 			const manufacturerRole = localStorage.getItem("manufacturerRole");
 			const distributorRole = localStorage.getItem("distributorRole");
 			const deliveryRole = localStorage.getItem("deliveryRole");
-			const customerRole = localStorage.getItem("customerRole");
+			const vaccinationCenterRole = localStorage.getItem(
+				"vaccinationCenterRole"
+			);
 
 			this.setState(
 				{
@@ -43,7 +45,7 @@ class App extends Component {
 					manufacturerRole: manufacturerRole,
 					distributorRole: distributorRole,
 					deliveryRole: deliveryRole,
-					customerRole: customerRole,
+					vaccinationCenterRole: vaccinationCenterRole,
 				},
 				this.runExample
 			);
