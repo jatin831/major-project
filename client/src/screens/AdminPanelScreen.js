@@ -4,144 +4,171 @@ import MenuItem from "@mui/material/MenuItem";
 import Navbar from "../components/NavbarWithoutButton";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useRole } from "../context/RoleDataContext";
+// import { useRole } from "../context/RoleDataContext";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 // export default
 function AdminPanelScreen(props) {
-	const accounts = props.accounts;
-	const supplyChainContract = props.supplyChainContract;
-	const { roles, setRoles } = useRole();
 
-	const [manufacturerRole, setManufacturerRole] = React.useState("");
-	const [distributorRole, setDistributorRole] = React.useState("");
-	const [deliveryRole, setDeliveryRole] = React.useState("");
-	const [vaccinationCenterRole, setVaccinationCenterRole] = React.useState("");
+  const accounts = props.accounts;
+  const supplyChainContract = props.supplyChainContract;
+  // const { roles, setRoles } = useRole();
 
-	const handleAddManufacturerRole = async () => {
-		await setRoles({
-			...roles,
-			manufacturer: manufacturerRole,
-		});
+  const [address, setAddress] = React.useState("");
+  const [role, setRole] = React.useState("1");
+  // const [distributorRole, setDistributorRole] = React.useState("");
+  // const [deliveryRole, setDeliveryRole] = React.useState("");
+  // const [vaccinationCenterRole, setVaccinationCenterRole] = React.useState("");
 
-		localStorage.setItem("manufacturerRole", manufacturerRole);
-		await supplyChainContract.methods
-			.addManufacturerRole(manufacturerRole)
-			.send({ from: accounts[0], gas: 100000 })
-			.then(console.log);
+  //   const handleAddManufacturerRole = async () => {
+  //     // await setRoles({
+  //     //   ...roles,
+  //     //   manufacturer: manufacturerRole,
+  //     // });
 
-		setManufacturerRole("");
-	};
+  //     localStorage.setItem("manufacturerRole", manufacturerRole);
+  //     await supplyChainContract.methods
+  //       .addManufacturerRole(manufacturerRole)
+  //       .send({ from: accounts[0], gas: 100000 })
+  //       .then(console.log);
 
-	// const handleAddDistributorRole = async () => {
-	// 	await setRoles({
-	// 		...roles,
-	// 		distributor: distributorRole,
-	// 	});
+  //     setManufacturerRole("");
+  //   };
 
-	// 	localStorage.setItem("distributorRole", distributorRole);
-	// 	await supplyChainContract.methods
-	// 		.addDistributorRole(distributorRole)
-	// 		.send({ from: accounts[0], gas: 100000 })
-	// 		.then(console.log);
+  // const handleAddDistributorRole = async () => {
+  // 	await setRoles({
+  // 		...roles,
+  // 		distributor: distributorRole,
+  // 	});
 
-	// 	setDistributorRole("");
-	// };
+  // 	localStorage.setItem("distributorRole", distributorRole);
+  // 	await supplyChainContract.methods
+  // 		.addDistributorRole(distributorRole)
+  // 		.send({ from: accounts[0], gas: 100000 })
+  // 		.then(console.log);
 
-	// const handleAddDeliveryRole = async () => {
-	// 	await setRoles({
-	// 		...roles,
-	// 		delivery: deliveryRole,
-	// 	});
+  // 	setDistributorRole("");
+  // };
 
-	// 	localStorage.setItem("deliveryRole", deliveryRole);
-	// 	await supplyChainContract.methods
-	// 		.addDeliveryRole(deliveryRole)
-	// 		.send({ from: accounts[0], gas: 100000 })
-	// 		.then(console.log);
+  // const handleAddDeliveryRole = async () => {
+  // 	await setRoles({
+  // 		...roles,
+  // 		delivery: deliveryRole,
+  // 	});
 
-	// 	setDeliveryRole("");
-	// };
+  // 	localStorage.setItem("deliveryRole", deliveryRole);
+  // 	await supplyChainContract.methods
+  // 		.addDeliveryRole(deliveryRole)
+  // 		.send({ from: accounts[0], gas: 100000 })
+  // 		.then(console.log);
 
-	// const handleAddVaccinationCenterRole = async () => {
-	// 	await setRoles({
-	// 		...roles,
-	// 		vaccinationCenter: vaccinationCenterRole,
-	// 	});
+  // 	setDeliveryRole("");
+  // };
 
-	// 	localStorage.setItem("vaccinationCenterRole", vaccinationCenterRole);
-	// 	await supplyChainContract.methods
-	// 		.addVaccinationCenterRole(vaccinationCenterRole)
-	// 		.send({ from: accounts[0], gas: 100000 })
-	// 		.then(console.log);
+  // const handleAddVaccinationCenterRole = async () => {
+  // 	await setRoles({
+  // 		...roles,
+  // 		vaccinationCenter: vaccinationCenterRole,
+  // 	});
 
-	// 	setVaccinationCenterRole("");
-	// };
+  // 	localStorage.setItem("vaccinationCenterRole", vaccinationCenterRole);
+  // 	await supplyChainContract.methods
+  // 		.addVaccinationCenterRole(vaccinationCenterRole)
+  // 		.send({ from: accounts[0], gas: 100000 })
+  // 		.then(console.log);
 
-	const [role, setRole] = React.useState("");
-	const [open, setOpen] = React.useState(false);
+  // 	setVaccinationCenterRole("");
+  // };
 
-	const handleChange = (event) => {
-		setRole(event.target.value);
-	};
+  const handleAddRole = async () => {
+    console.log(address, role);
+    if (role == "1") {
+      await supplyChainContract.methods
+        .addManufacturerRole(address)
+        .send({ from: accounts[0], gas: 100000 })
+        .then(console.log);
+    } else if (role == "2") {
+      await supplyChainContract.methods
+        .addDistributorRole(address)
+        .send({ from: accounts[0], gas: 100000 })
+        .then(console.log);
+    } else if (role == "3") {
+      await supplyChainContract.methods
+        .addDeliveryrRole(address)
+        .send({ from: accounts[0], gas: 100000 })
+        .then(console.log);
+    } else {
+      await supplyChainContract.methods
+        .addVaccinationCenterRole(address)
+        .send({ from: accounts[0], gas: 100000 })
+        .then(console.log);
+    }
+  };
 
-	const handleClose = () => {
-		setOpen(false);
-	};
+  const [open, setOpen] = React.useState(false);
 
-	const handleOpen = () => {
-		setOpen(true);
-	};
+  const handleChange = (event) => {
+    setRole(event.target.value);
+  };
 
-	return (
-		<div>
-			<Navbar />
-			<h3>Add New Member to the Blockchain</h3>
-			<div className="homepage-container">
-				<form noValidate autoComplete="off">
-					<div>
-						<TextField
-							id="manufacturerRole"
-							label="Enter Address"
-							variant="outlined"
-							value={manufacturerRole}
-							onChange={(e) => setManufacturerRole(e.target.value)}
-							style={{ width: "500px" }}
-						/>
-					</div>
-				</form>
-				<FormControl sx={{ m: 1, minWidth: 120 }}>
-					<InputLabel id="demo-controlled-open-select-label">Role</InputLabel>
-					<Select
-						labelId="demo-controlled-open-select-label"
-						id="demo-controlled-open-select"
-						open={open}
-						onClose={handleClose}
-						onOpen={handleOpen}
-						value={role}
-						label="Role"
-						onChange={handleChange}
-					>
-						<MenuItem value={0}>
-							<em>None</em>
-						</MenuItem>
-						<MenuItem value={1}>Manufacturer</MenuItem>
-						<MenuItem value={2}>Distributor</MenuItem>
-						<MenuItem value={3}>Delivery</MenuItem>
-						<MenuItem value={4}>Vaccination Center</MenuItem>
-					</Select>
-				</FormControl>
-				<Button
-					variant="contained"
-					color="primary"
-					// onClick={handleAddManufacturerRole}
-					style={{ width: "20%", marginLeft: "10px" }}
-				>
-					Add Member
-				</Button>
-			</div>
-		</div>
-	);
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  return (
+    <div>
+      <Navbar />
+      <h3>Add New Member to the Blockchain</h3>
+      <div className="homepage-container">
+        <form noValidate autoComplete="off">
+          <div>
+            <TextField
+              id="address"
+              label="Enter Address"
+              variant="outlined"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              style={{ width: "500px" }}
+            />
+          </div>
+        </form>
+        <FormControl sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="demo-controlled-open-select-label">Role</InputLabel>
+          <Select
+            labelId="demo-controlled-open-select-label"
+            id="demo-controlled-open-select"
+            open={open}
+            onClose={handleClose}
+            onOpen={handleOpen}
+            value={role}
+            label="Role"
+            onChange={handleChange}
+          >
+            {/* <MenuItem value={0}>
+              <em>None</em>
+            </MenuItem> */}
+            <MenuItem value={1}>Manufacturer</MenuItem>
+            <MenuItem value={2}>Distributor</MenuItem>
+            <MenuItem value={3}>Delivery</MenuItem>
+            <MenuItem value={4}>Vaccination Center</MenuItem>
+          </Select>
+        </FormControl>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleAddRole}
+          style={{ width: "20%", marginLeft: "10px" }}
+        >
+          Add Member
+        </Button>
+      </div>
+    </div>
+  );
+
 }
 export default AdminPanelScreen;
