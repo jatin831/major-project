@@ -15,9 +15,9 @@ function AdminPanelScreen(props) {
 	const { roles, setRoles } = useRole();
 
 	const [manufacturerRole, setManufacturerRole] = React.useState("");
-	// const [distributorRole, setDistributorRole] = React.useState("");
-	// const [deliveryRole, setDeliveryRole] = React.useState("");
-	// const [vaccinationCenterRole, setVaccinationCenterRole] = React.useState("");
+	const [distributorRole, setDistributorRole] = React.useState("");
+	const [deliveryRole, setDeliveryRole] = React.useState("");
+	const [vaccinationCenterRole, setVaccinationCenterRole] = React.useState("");
 
 	const handleAddManufacturerRole = async () => {
 		await setRoles({
