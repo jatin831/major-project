@@ -12,28 +12,27 @@ import Button from "@material-ui/core/Button";
 function AdminPanelScreen(props) {
 	const accounts = props.accounts;
 	const supplyChainContract = props.supplyChainContract;
-
-	// const { roles, setRoles } = useRole();
+	const { roles, setRoles } = useRole();
 
 	const [manufacturerRole, setManufacturerRole] = React.useState("");
-	const [distributorRole, setDistributorRole] = React.useState("");
-	const [deliveryRole, setDeliveryRole] = React.useState("");
-	const [customerRole, setCustomerRole] = React.useState("");
+	// const [distributorRole, setDistributorRole] = React.useState("");
+	// const [deliveryRole, setDeliveryRole] = React.useState("");
+	// const [vaccinationCenterRole, setVaccinationCenterRole] = React.useState("");
 
-	// const handleAddManufacturerRole = async () => {
-	// 	await setRoles({
-	// 		...roles,
-	// 		manufacturer: manufacturerRole,
-	// 	});
+	const handleAddManufacturerRole = async () => {
+		await setRoles({
+			...roles,
+			manufacturer: manufacturerRole,
+		});
 
-	// 	localStorage.setItem("manufacturerRole", manufacturerRole);
-	// 	await supplyChainContract.methods
-	// 		.addManufacturerRole(manufacturerRole)
-	// 		.send({ from: accounts[0], gas: 100000 })
-	// 		.then(console.log);
+		localStorage.setItem("manufacturerRole", manufacturerRole);
+		await supplyChainContract.methods
+			.addManufacturerRole(manufacturerRole)
+			.send({ from: accounts[0], gas: 100000 })
+			.then(console.log);
 
-	// 	setManufacturerRole("");
-	// };
+		setManufacturerRole("");
+	};
 
 	// const handleAddDistributorRole = async () => {
 	// 	await setRoles({
@@ -65,19 +64,19 @@ function AdminPanelScreen(props) {
 	// 	setDeliveryRole("");
 	// };
 
-	// const handleAddCustomerRole = async () => {
+	// const handleAddVaccinationCenterRole = async () => {
 	// 	await setRoles({
 	// 		...roles,
-	// 		customer: customerRole,
+	// 		vaccinationCenter: vaccinationCenterRole,
 	// 	});
 
-	// 	localStorage.setItem("customerRole", customerRole);
+	// 	localStorage.setItem("vaccinationCenterRole", vaccinationCenterRole);
 	// 	await supplyChainContract.methods
-	// 		.addCustomerRole(customerRole)
+	// 		.addVaccinationCenterRole(vaccinationCenterRole)
 	// 		.send({ from: accounts[0], gas: 100000 })
 	// 		.then(console.log);
 
-	// 	setCustomerRole("");
+	// 	setVaccinationCenterRole("");
 	// };
 
 	const [role, setRole] = React.useState("");

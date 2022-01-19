@@ -10,7 +10,7 @@ contract SupplyChain {
         roles[_account].Manufacturer = true;
     }
 
-  function DistributorRole(address _account) public {
+  function addDistributorRole(address _account) public {
         roles[_account].Distributor = true;
     }
 
@@ -18,8 +18,8 @@ contract SupplyChain {
         roles[_account].Delivery = true;
     }
 
-  function addVaccination_CenterRole(address _account) public {
-        roles[_account].Vaccination_Center = true;
+  function addVaccinationCenterRole(address _account) public {
+        roles[_account].VaccinationCenter = true;
     }
 
 }
