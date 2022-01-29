@@ -42,6 +42,7 @@ contract SupplyChain {
   function addDeliveryRole(address _account) public {
     require(msg.sender==owner);
     require(!hasDeliveryRole(_account));
+
         roles[_account].Delivery = true;
     }
 
