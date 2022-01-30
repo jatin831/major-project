@@ -5,6 +5,7 @@ import "./App.css";
 import HomeScreen from "./screens/HomeScreen";
 import AdminPanelScreen from "./screens/AdminPanelScreen";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import ManufacturerScreen from "./screens/ManufacturerScreen";
 
 class App extends Component {
 
@@ -80,6 +81,12 @@ class App extends Component {
             </Route>
             <Route exact path="/admin">
               <AdminPanelScreen
+                accounts={this.state.accounts}
+                supplyChainContract={this.state.contract}
+              />
+            </Route>
+            <Route exact path="/manufacturer">
+              <ManufacturerScreen
                 accounts={this.state.accounts}
                 supplyChainContract={this.state.contract}
               />
