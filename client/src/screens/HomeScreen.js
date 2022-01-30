@@ -56,7 +56,7 @@ export default function HomeScreen() {
 												></img>
 											</Grid>
 											<Grid item xs={12}>
-												<Button variant="contained" color="primary">
+												<Button variant="contained" color="primary" component={Link} to="/distributor">
 													Distributor
 												</Button>
 											</Grid>
@@ -68,7 +68,7 @@ export default function HomeScreen() {
 												<img src={DeliveryImage} height={150} width={150}></img>
 											</Grid>
 											<Grid item xs={12}>
-												<Button variant="contained" color="primary">
+												<Button variant="contained" color="primary" component={Link} to="/delivery">
 													Delivery
 												</Button>
 											</Grid>
