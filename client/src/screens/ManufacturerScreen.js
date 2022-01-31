@@ -10,15 +10,17 @@ export default function ManufacturerScreen(props) {
     var [tableData, setTableData] = React.useState([]);
     const accounts = props.accounts;
     const supplyChainContract = props.supplyChainContract;
-    supplyChainContract.methods
-        .fetchProduct(1)
-        .call({ from: accounts[0], gas: 100000 })
-        .then((response) => {
-            var temp = [];
-            temp.push(response);
-            // setTableData(temp);
-            console.log(temp);
-        });
+    React.useEffect(() => {
+        supplyChainContract.methods
+            .fetchProduct(1)
+            .call({ from: accounts[0], gas: 100000 })
+            .then((response) => {
+                var temp = [];
+                temp.push(response);
+                setTableData(temp);
+                console.log(temp);
+            });
+    }, []);
     // console.log("reached here");
     return (
         <div>
@@ -35,7 +37,7 @@ export default function ManufacturerScreen(props) {
                         />
                     </Grid>
                     <Grid item xs={12}>
-                        <ProductTable />
+                        <ProductTable data={tableData} />
                     </Grid>
                 </Grid>
             </div>

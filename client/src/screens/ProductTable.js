@@ -17,43 +17,34 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+export function ProductTable(props) {
+    console.log(props.data[0]);
 
-// function Buy(){
-//     return (
-//         <Button variant="contained" color="primary" component={Link} to="/distributor/buy">
-//         Buy
-//         </Button>
-//     )
-// }
-export function ProductTable(prop) {
     return (
         <div className="Distributor">
             <table>
                 <tr>
-                    <th>Universal ID</th>
-                    <th>Product Code</th>
+                    <th>Product ID </th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Product Category </th>
                     <th>Manufacture</th>
-                    <th>Manufacture Date</th>
-                    <th>Product Name </th>
-                    <th> Owner</th>
-                    {/* <th>Buy </th> */}
 
                 </tr>
                 {/* adding data using loop */}
-                {/* {prop.data.map((val, key) => {
-                    return (
-                        <tr key={key}>
-                            <td>{val.Universal_ID}</td>
-                            <td>{val.Product_Code}</td>
-                            <td>{val.Manufacture}</td>
-                            <td>{val.Manufacture_Date}</td>
-                            <td>{val.Product_Name}</td>
-                            <td>{val.Owner}</td>
-                            <td><Buy /></td>
+                {
+                    props.data.map((s) => {
+                        return <tr>
+                            <td>{s[0]}</td>
+                            <td>{s[1]}</td>
+                            <td>{s[2]}</td>
+                            <td>{s[3]}</td>
+                            <td>{s[4]}</td>
 
                         </tr>
-                    )
-                })} */}
+                    })
+                }
+
             </table>
         </div>
     );
