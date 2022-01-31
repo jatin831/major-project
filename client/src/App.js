@@ -5,6 +5,7 @@ import "./App.css";
 import HomeScreen from "./screens/HomeScreen";
 import AdminPanelScreen from "./screens/AdminPanelScreen";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import ManufacturerScreen from "./screens/ManufacturerScreen";
 import CustomerScreen from "./screens/CustomerScreen";
 import DeliveryScreen from "./screens/DeliveryScreen";
 
@@ -85,6 +86,9 @@ class App extends Component {
                 accounts={this.state.accounts}
                 supplyChainContract={this.state.contract}
               />
+            </Route>
+            <Route exact path="/manufacturer">
+              <ManufacturerScreen />
             </Route>
             <Route exact path="/distributor">
               <CustomerScreen

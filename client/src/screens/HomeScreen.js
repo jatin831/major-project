@@ -8,7 +8,7 @@ import DeliveryImage from "../assets/Delivery.jpg";
 import VaccinationCenterImage from "../assets/center.jpg";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function HomeScreen() {
 	return (
@@ -40,7 +40,7 @@ export default function HomeScreen() {
 												></img>
 											</Grid>
 											<Grid item xs={12}>
-												<Button variant="contained" color="primary">
+												<Button variant="contained" color="primary" component={Link} to="/manufacturer">
 													Manufacturer
 												</Button>
 											</Grid>
