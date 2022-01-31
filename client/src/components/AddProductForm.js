@@ -112,6 +112,7 @@ export default function AddProductForm(props) {
 
 	const handleClick = () => {
 		setOpenSnack(true);
+		handleSubmitManufacturerForm();
 	};
 
 	const handleCloseSnack = (event, reason) => {
@@ -227,7 +228,7 @@ export default function AddProductForm(props) {
 					type="submit"
 					variant="contained"
 					color="primary"
-					onClick={(handleSubmitManufacturerForm, handleClick)}
+					onClick={handleClick}
 				>
 					SUBMIT
 				</Button>

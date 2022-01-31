@@ -88,6 +88,7 @@ function AdminPanelScreen(props) {
 	// };
 
 	const handleAddRole = async () => {
+		handleClick();
 		console.log(address, role);
 		if (role == "1") {
 			await supplyChainContract.methods
@@ -185,7 +186,9 @@ function AdminPanelScreen(props) {
 				<Button
 					variant="contained"
 					color="primary"
-					onClick={(handleAddRole, handleClick)}
+					onClick={
+						handleAddRole
+					}
 					style={{ width: "20%", marginLeft: "10px" }}
 				>
 					Add Member
@@ -193,7 +196,7 @@ function AdminPanelScreen(props) {
 				<Snackbar
 					open={openSnack}
 					autoHideDuration={6000}
-					onClose={handleCloseSnack}
+					onClose={handleClick}
 				>
 					<Alert
 						onClose={handleCloseSnack}
