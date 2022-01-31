@@ -89,8 +89,16 @@ contract SupplyChain {
         uid = uid + 1;
     }
 
-    function fetchProduct(uint256 _uid) public view returns (address) {
+    function fetchProduct(uint256 _uid) public view returns (uint256,
+    string memory,
+    uint256,
+    string memory,
+    address,
+    string memory,
+    string memory
+    ) {
         Structure.Product storage product = products[_uid];
-        return product.manufacturer.manufacturer;
+        return ( product.productdet.productid, product.productdet.productName, product.productdet.productPrice, product.productdet.productCategory, product.manufacturer.manufacturer,
+        product.manufacturer.manufacturerLongitude, product.manufacturer.manufacturerLatitude);
     }
 }
