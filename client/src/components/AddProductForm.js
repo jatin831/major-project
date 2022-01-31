@@ -5,7 +5,9 @@ import Button from "@material-ui/core/Button";
 import { useStyles } from "./Styles";
 import Grid from "@material-ui/core/Grid";
 
-export default function AddProductForm() {
+export default function AddProductForm(props) {
+    const accounts = props.accounts;
+    const supplyChainContract = props.supplyChainContract;
     const classes = useStyles();
     // const { roles } = useRole();
     const [fvalid, setfvalid] = React.useState(false);
@@ -33,35 +35,31 @@ export default function AddProductForm() {
     const handleSubmitManufacturerForm = async () => {
         setLoading(true);
 
-        // if (manuForm.manufacturerName !== "" && manuForm.manufacturerDetails !== "" && manuForm.manufacturerLongitude !== "" && manuForm.manufacturerLatitude !== "" && manuForm.productName !== "" && manuForm.productCode !== 0 && manuForm.productPrice !== 0 && manuForm.productCategory !== "") {
-        //     setfvalid(false);
-        //     await supplyChainContract.methods.manufactureProduct(manuForm.manufacturerName, manuForm.manufacturerDetails, manuForm.manufacturerLongitude, manuForm.manufacturerLatitude, manuForm.productName, parseInt(manuForm.productCode), parseInt(manuForm.productPrice), manuForm.productCategory).send({ from: roles.manufacturer, gas: 999999 })
-        //         // .then(console.log)
-        //         .on('transactionHash', function (hash) {
-        //             handleSetTxhash(hash);
-        //         });
-        //     setManuForm({
-        //         id: 0,
-        //         manufacturerName: "",
-        //         manufacturerDetails: "",
-        //         manufacturerLongitude: "",
-        //         manufacturerLatitude: "",
-        //         productName: "",
-        //         productCode: 0,
-        //         productPrice: 0,
-        //         productCategory: "",
-        //     })
-        // } else {
-        //     setfvalid(true);
-        // }
+        if (manuForm.manufacturerName !== "" && manuForm.manufacturerDetails !== "" && manuForm.manufacturerLongitude !== "" && manuForm.manufacturerLatitude !== "" && manuForm.productName !== "" && manuForm.productCode !== 0 && manuForm.productPrice !== 0 && manuForm.productCategory !== "") {
+            setfvalid(false);
+            await supplyChainContract.methods.manufactureProduct(manuForm.manufacturerLongitude, manuForm.manufacturerLatitude, manuForm.productName, parseInt(manuForm.productPrice), manuForm.productCategory).send({ from: accounts[0], gas: 1000000 });
+            setManuForm({
+                id: 0,
+                manufacturerName: "",
+                manufacturerDetails: "",
+                manufacturerLongitude: "",
+                manufacturerLatitude: "",
+                productName: "",
+                productCode: 0,
+                productPrice: 0,
+                productCategory: "",
+            })
+        } else {
+            setfvalid(true);
+        }
         setLoading(false);
     };
 
-    const handleSetTxhash = async (hash) => {
-        // await supplyChainContract.methods
-        //     .setTransactionHashOnManufacture(hash)
-        //     .send({ from: roles.manufacturer, gas: 900000 });
-    };
+    // const handleSetTxhash = async (hash) => {
+    //     await supplyChainContract.methods
+    //         .setTransactionHashOnManufacture(hash)
+    //         .send({ from: roles.manufacturer, gas: 900000 });
+    // };
 
     // const createProduct = async () => {
     //     setLoading(true);

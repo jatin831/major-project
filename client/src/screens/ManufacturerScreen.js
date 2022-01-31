@@ -5,14 +5,18 @@ import Navbar from "../components/Navbar";
 
 export default function ManufacturerScreen(props) {
     var [isProductFormActive, setProductForm] = React.useState(true);
-    console.log("reached here");
+    const accounts = props.accounts;
+    const supplyChainContract = props.supplyChainContract;
+    console.log(supplyChainContract.methods.fetchProduct(1).call({ from: accounts[0], gas: 100000 }));
+    // console.log("reached here");
     return <div>
         <Navbar />
         <div className="homepage-container">
             {/* <Button variant="contained" color="primary" onClick={() => { setProductForm(true) }}>
             Add Product
         </Button> */}
-            {isProductFormActive ? <AddProductForm /> : null}
+            {isProductFormActive ? <AddProductForm accounts={accounts}
+                supplyChainContract={supplyChainContract} /> : null}
             {/* <AddProductForm /> */}
         </div>
     </div>;
