@@ -53,6 +53,13 @@ const useStyles = makeStyles((theme) => ({
         </div>
     )
 }
+function Ship(){
+    return (
+        <Button variant="contained" color="primary" component={Link} to="/delivery/ship">
+        Ship
+        </Button>
+    )
+}
 function DeliveryTable(prob) {
     return (
       <div className="Distributor">
@@ -68,15 +75,20 @@ function DeliveryTable(prob) {
 
           </tr>
          {/* adding data using loop */}
-          {/* {prob.data.map((val, key) => {
+          {prob.data.map((val, key) => {
             return (
               <tr key={key}>
-                <td>{val.name}</td>
-                <td>{val.age}</td>
-                <td>{val.gender}</td>
+                <td>{val.Universal_ID}</td>
+                <td>{val.Product_Code}</td>
+                <td>{val.Manufacture}</td>
+                <td>{val.Manufacture_Date}</td>
+                <td>{val.Product_Name}</td>
+                <td>{val.Owner}</td>
+                <td><Ship /></td>
+
               </tr>
             )
-          })} */}
+          })}
         </table>
       </div>
     );
