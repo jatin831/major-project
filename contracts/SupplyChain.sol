@@ -8,12 +8,15 @@ contract SupplyChain {
   address owner;
 
   mapping(address => Structure.Roles) roles;
+  mapping(uint256 => Structure.Product) products;
+  mapping(uint256 => Structure.ProductHistory) productHistory;
 
-
-  constructor() {
+  constructor() public{
         owner = msg.sender;
         uid = 1;
     }
+
+  event Manufactured(uint256 uid);
 
   function hasManufacturerRole(address _account) public view returns (bool) {
         return roles[_account].Manufacturer;
@@ -56,4 +59,29 @@ contract SupplyChain {
         roles[_account].VaccinationCenter = true;
     }
 
+function manufactureProduct(
+        string memory manufacturerLongitude,
+        string memory manufacturerLatitude,
+        string memory productName,
+        uint256 productPrice,
+        string memory productCategory
+    ) public {
+        require(hasManufacturerRole(msg.sender));
+        Structure.Product memory product;
+        product.productdet.productid = uid;
+        product.productdet.productName = productName;
+        product.productdet.productPrice = productPrice;
+        product.productdet.productCategory = productCategory;
+        product.manufacturer.manufacturer = msg.sender;
+        product.manufacturer.manufacturerLongitude = manufacturerLongitude;
+        product.manufacturer.manufacturerLatitude = manufacturerLatitude;
+        product.productState = Structure.State.Manufactured;
+        
+        products[uid] = product;
+
+        productHistory[uid].history.push(product);
+        
+        emit Manufactured(uid);
+        uid = uid + 1;
+    }
 }
