@@ -8,6 +8,13 @@ import Select from "@mui/material/Select";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 // export default
 function AdminPanelScreen(props) {
 	const accounts = props.accounts;
@@ -81,6 +88,7 @@ function AdminPanelScreen(props) {
 	// };
 
 	const handleAddRole = async () => {
+		handleClick();
 		console.log(address, role);
 		if (role == "1") {
 			await supplyChainContract.methods
@@ -118,6 +126,22 @@ function AdminPanelScreen(props) {
 	const handleOpen = () => {
 		setOpen(true);
 	};
+
+	// -------// -------
+	const [openSnack, setOpenSnack] = React.useState(false);
+
+	const handleClick = () => {
+		setOpenSnack(true);
+	};
+
+	const handleCloseSnack = (event, reason) => {
+		if (reason === "clickaway") {
+			return;
+		}
+
+		setOpenSnack(false);
+	};
+	// -------// -------
 
 	return (
 		<div>
@@ -157,14 +181,32 @@ function AdminPanelScreen(props) {
 						<MenuItem value={4}>Vaccination Center</MenuItem>
 					</Select>
 				</FormControl>
+
+				{/* <Stack spacing={2} sx={{ width: "100%" }}> */}
 				<Button
 					variant="contained"
 					color="primary"
-					onClick={handleAddRole}
+					onClick={
+						handleAddRole
+					}
 					style={{ width: "20%", marginLeft: "10px" }}
 				>
 					Add Member
 				</Button>
+				<Snackbar
+					open={openSnack}
+					autoHideDuration={6000}
+					onClose={handleClick}
+				>
+					<Alert
+						onClose={handleCloseSnack}
+						severity="success"
+						sx={{ width: "100%" }}
+					>
+						Member Added Successfully!
+					</Alert>
+				</Snackbar>
+				{/* </Stack> */}
 			</div>
 		</div>
 	);

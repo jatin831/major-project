@@ -62,7 +62,7 @@ class App extends Component {
 
   runExample = async () => {
     const { contract } = this.state;
-    console.log(contract);
+    // console.log(contract);
   };
 
   render() {
@@ -88,7 +88,8 @@ class App extends Component {
               />
             </Route>
             <Route exact path="/manufacturer">
-              <ManufacturerScreen />
+              <ManufacturerScreen accounts={this.state.accounts}
+                supplyChainContract={this.state.contract} />
             </Route>
             <Route exact path="/distributor">
               <CustomerScreen
