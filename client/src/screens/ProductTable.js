@@ -40,7 +40,6 @@ export function ProductTable(props) {
                             <td>{s[2]}</td>
                             <td>{s[3]}</td>
                             <td>{s[4]}</td>
-
                         </tr>
                     })
                 }
