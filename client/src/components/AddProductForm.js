@@ -79,35 +79,6 @@ export default function AddProductForm(props) {
 		setLoading(false);
 	};
 
-	// const handleSetTxhash = async (hash) => {
-	//     await supplyChainContract.methods
-	//         .setTransactionHashOnManufacture(hash)
-	//         .send({ from: roles.manufacturer, gas: 900000 });
-	// };
-
-	// const createProduct = async () => {
-	//     setLoading(true);
-	//     for (var i = 0; i < 5; i++) {
-	//         await supplyChainContract.methods
-	//             .manufactureProduct(
-	//                 "product" + i,
-	//                 "manufacturer" + 1,
-	//                 "98",
-	//                 "89",
-	//                 "mi" + i,
-	//                 99 + i,
-	//                 12000,
-	//                 "electronics"
-	//             )
-	//             .send({ from: roles.manufacturer, gas: 999999 })
-	//             .on("transactionHash", function (hash) {
-	//                 handleSetTxhash(hash);
-	//             });
-	//     }
-	//     setLoading(false);
-	// };
-
-	// -------// -------
 	const [openSnack, setOpenSnack] = React.useState(false);
 
 	const handleClick = () => {
@@ -180,7 +151,7 @@ export default function AddProductForm(props) {
 							variant="outlined"
 							value={manuForm.productName}
 							onChange={handleChangeManufacturerForm}
-							label="Product Name"
+							label="Vaccine Name"
 							style={{ width: "100%" }}
 						/>
 					</Grid>
@@ -191,7 +162,7 @@ export default function AddProductForm(props) {
 							variant="outlined"
 							value={manuForm.productCode}
 							onChange={handleChangeManufacturerForm}
-							label="Product Code"
+							label="Vaccine Code"
 							style={{ width: "100%" }}
 						/>
 					</Grid>
