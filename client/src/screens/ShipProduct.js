@@ -1,8 +1,26 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "../css/Distributorscreen.css";
+
+import Button from "@material-ui/core/Button";
+
+import { Link } from "react-router-dom";
+
 const date = new Date();
 const d = date.getFullYear();
+
+function Ship() {
+	return (
+		<Button
+			variant="contained"
+			color="primary"
+			component={Link}
+			to="/delivery/ship"
+		>
+			Ship
+		</Button>
+	);
+}
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -17,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export function ProductTable(props) {
+export function ShipProduct(props) {
 	console.log(props.data[0]);
 
 	return (
@@ -29,6 +47,7 @@ export function ProductTable(props) {
 					<th>Price</th>
 					<th>Product Category </th>
 					<th>Manufacture</th>
+					<th>Ship</th>
 				</tr>
 				{/* adding data using loop */}
 				{props.data.map((s) => {
@@ -39,6 +58,9 @@ export function ProductTable(props) {
 							<td>{s[2]}</td>
 							<td>{s[3]}</td>
 							<td>{s[4]}</td>
+							<td>
+								<Ship />
+							</td>
 						</tr>
 					);
 				})}
