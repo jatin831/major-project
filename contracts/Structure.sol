@@ -3,7 +3,15 @@ pragma solidity >=0.4.21 <8.10.0;
 library Structure {
 
     enum State {
-        Manufactured
+        Manufactured,
+        PurchasedByDistributor,
+        ShippedByManufacturer,
+        ReceivedByDistributor,
+        PurchasedByVaccinationCenter,
+        ShippedByDistributor,
+        ReceivedByDeliveryHub,
+        ShippedByDeliveryHub,
+        ReceivedByVaccinationCenter
     }
 
     struct ManufactureDetails {
@@ -31,26 +39,27 @@ library Structure {
         string deliveryHubLatitude;
     }
 
-    struct CustomerDetails {
-        address customer;
-        string customerLongitude;
-        string customerLatitude;
+    struct VaccinationCenterDetails {
+        address vaccinationcenter;
+        string vaccinationcenterLongitude;
+        string vaccinationcenterLatitude;
     }
 
     struct Roles {
         bool Manufacturer;
         bool Distributor;
-        bool Delivery;
+        bool DeliveryHub;
         bool VaccinationCenter;
     }
 
     struct Product {
+        address owner;
         ProductDetails productdet;
         State productState;
         ManufactureDetails manufacturer;    
-        DistributorDetails thirdparty;
+        DistributorDetails distributor;
         DeliveryHubDetails deliveryhub;
-        CustomerDetails customer;
+        VaccinationCenterDetails vaccinationcenter;
     }
 
     struct ProductHistory {
