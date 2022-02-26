@@ -47,7 +47,7 @@ export default function ManufacturerScreen(props) {
 			const shipArr = [];
 			const buyArr = [];
 
-			for (var i = 1; i <= count; i++) {
+			for (var i = 1; i < count; i++) {
 				const prodState = await supplyChainContract.methods
 					.fetchProductState(i)
 					.call({ from: accounts[0], gas: 100000 });
@@ -55,7 +55,7 @@ export default function ManufacturerScreen(props) {
 				if (prodState == '0') {
 					const a = await supplyChainContract.methods.fetchProduct(i).call({ from: accounts[0], gas: 100000 });
 					allArr.push(a)
-				} else if (prodState == 1) {
+				} else if (prodState == '1') {
 					const a = await supplyChainContract.methods.fetchProduct(i).call({ from: accounts[0], gas: 100000 });
 					shipArr.push(a)
 				}
