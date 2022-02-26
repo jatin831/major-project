@@ -276,16 +276,26 @@ contract SupplyChain {
         emit ReceivedByVaccinationCenter(_uid);
     }
 
+    function fetchProductCount() public view returns (uint256) {
+        return uid;
+    }
+
+    function fetchProductState(uint256 _uid) public view returns (Structure.State) {
+        return products[_uid].productState;
+    }
+
     function fetchProduct(uint256 _uid) public view returns (uint256,
     string memory,
     uint256,
     string memory,
     address,
     string memory,
-    string memory
+    string memory,
+    address
     ) {
         Structure.Product storage product = products[_uid];
         return ( product.productdet.productid, product.productdet.productName, product.productdet.productPrice, product.productdet.productCategory, product.manufacturer.manufacturer,
-        product.manufacturer.manufacturerLongitude, product.manufacturer.manufacturerLatitude);
+        product.manufacturer.manufacturerLongitude, product.manufacturer.manufacturerLatitude, product.distributor.distributor);
     }
+
 }
