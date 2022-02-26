@@ -132,8 +132,8 @@ contract SupplyChain {
 
     // STEP 1 : Manufacture a product.
     function manufactureProduct(
-        string memory manufacturerLongitude,
-        string memory manufacturerLatitude,
+        // string memory manufacturerLongitude,
+        // string memory manufacturerLatitude,
         string memory productName,
         uint256 productPrice,
         string memory productCategory
@@ -146,8 +146,8 @@ contract SupplyChain {
         product.productdet.productPrice = productPrice;
         product.productdet.productCategory = productCategory;
         product.manufacturer.manufacturer = msg.sender;
-        product.manufacturer.manufacturerLongitude = manufacturerLongitude;
-        product.manufacturer.manufacturerLatitude = manufacturerLatitude;
+        // product.manufacturer.manufacturerLongitude = manufacturerLongitude;
+        // product.manufacturer.manufacturerLatitude = manufacturerLatitude;
         product.productState = Structure.State.Manufactured;
 
         products[uid] = product;
@@ -182,9 +182,9 @@ contract SupplyChain {
 
     // STEP 4 : Receive the purchased product shipped by Manufacturer.
     function receiveByDistributor(
-        uint256 _uid,
-        string memory distributorLongitude,
-        string memory distributorLatitude
+        uint256 _uid
+        // string memory distributorLongitude,
+        // string memory distributorLatitude
     )
         public
         shippedByManufacturer(_uid)
@@ -192,8 +192,8 @@ contract SupplyChain {
     {
         require(hasDistributorRole(msg.sender));
         products[_uid].owner = msg.sender;
-        products[_uid].distributor.distributorLongitude = distributorLongitude;
-        products[_uid].distributor.distributorLatitude = distributorLatitude;
+        // products[_uid].distributor.distributorLongitude = distributorLongitude;
+        // products[_uid].distributor.distributorLatitude = distributorLatitude;
         products[_uid].productState = Structure.State.ReceivedByDistributor;
         productHistory[_uid].history.push(products[_uid]);
 
@@ -228,15 +228,15 @@ contract SupplyChain {
 
     // STEP 7 : Receiveing of product by delivery hub purchased by VaccinationCenter.
     function receiveByDeliveryHub(
-        uint256 _uid,
-        string memory deliveryHubLongitude,
-        string memory deliveryHubLatitude
+        uint256 _uid
+        // string memory deliveryHubLongitude,
+        // string memory deliveryHubLatitude
     ) public shippedByDistributor(_uid) {
         require(hasDeliveryHubRole(msg.sender));
         products[_uid].owner = msg.sender;
-        products[_uid].deliveryhub.deliveryHub = msg.sender;
-        products[_uid].deliveryhub.deliveryHubLongitude = deliveryHubLongitude;
-        products[_uid].deliveryhub.deliveryHubLatitude = deliveryHubLatitude;
+        products[_uid].deliveryhub.deliveryhub = msg.sender;
+        // products[_uid].deliveryhub.deliveryHubLongitude = deliveryHubLongitude;
+        // products[_uid].deliveryhub.deliveryHubLatitude = deliveryHubLatitude;
         products[_uid].productState = Structure.State.ReceivedByDeliveryHub;
         productHistory[_uid].history.push(products[_uid]);
 
@@ -258,9 +258,9 @@ contract SupplyChain {
 
     // STEP 9 : Receive the purchased product by VaccinationCenter.
     function receiveByCustomer(
-        uint256 _uid,
-        string memory vaccinationcenterLongitude,
-        string memory vaccinationcenterLatitude
+        uint256 _uid
+        // string memory vaccinationcenterLongitude,
+        // string memory vaccinationcenterLatitude
         )
         public
         shippedByDeliveryHub(_uid)
@@ -268,8 +268,8 @@ contract SupplyChain {
     {
         require(hasVaccinationCenterRole(msg.sender));
         products[_uid].owner = msg.sender;
-        products[_uid].vaccinationcenter.vaccinationcenterLongitude = vaccinationcenterLongitude;
-        products[_uid].vaccinationcenter.vaccinationcenterLatitude = vaccinationcenterLatitude;
+        // products[_uid].vaccinationcenter.vaccinationcenterLongitude = vaccinationcenterLongitude;
+        // products[_uid].vaccinationcenter.vaccinationcenterLatitude = vaccinationcenterLatitude;
         products[_uid].productState = Structure.State.ReceivedByVaccinationCenter;
         productHistory[_uid].history.push(products[_uid]);
 
@@ -284,18 +284,21 @@ contract SupplyChain {
         return products[_uid].productState;
     }
 
-    function fetchProduct(uint256 _uid) public view returns (uint256,
+    function fetchProduct(uint256 _uid) public view returns (
+        address,
+    uint256,
     string memory,
     uint256,
     string memory,
+    Structure.State,
     address,
-    string memory,
-    string memory,
+    address,
+    address,
     address
     ) {
         Structure.Product storage product = products[_uid];
-        return ( product.productdet.productid, product.productdet.productName, product.productdet.productPrice, product.productdet.productCategory, product.manufacturer.manufacturer,
-        product.manufacturer.manufacturerLongitude, product.manufacturer.manufacturerLatitude, product.distributor.distributor);
+        return ( product.owner, product.productdet.productid, product.productdet.productName, product.productdet.productPrice, product.productdet.productCategory, product.productState,  product.manufacturer.manufacturer,
+         product.distributor.distributor, product.deliveryhub.deliveryhub, product.vaccinationcenter.vaccinationcenter);
     }
 
 }
