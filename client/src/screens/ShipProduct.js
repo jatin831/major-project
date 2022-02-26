@@ -46,18 +46,20 @@ export function ShipProduct(props) {
 					<th>Product Name</th>
 					<th>Price</th>
 					<th>Product Category </th>
-					<th>Manufacture</th>
+					<th>Owner</th>
+					<th>State</th>
 					<th>Ship</th>
 				</tr>
 				{/* adding data using loop */}
 				{props.data.map((s) => {
 					return (
 						<tr>
-							<td>{s[0]}</td>
 							<td>{s[1]}</td>
 							<td>{s[2]}</td>
 							<td>{s[3]}</td>
 							<td>{s[4]}</td>
+							<td>{s[0]}</td>
+							<td>{s[5]}</td>
 							<td>
 								<Ship />
 							</td>
