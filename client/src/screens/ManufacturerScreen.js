@@ -29,32 +29,42 @@ const useStyles = makeStyles((theme) => ({
 export default function ManufacturerScreen(props) {
 	const classes = useStyles();
 	var [state, setCurState] = React.useState(0);
-	var [tableData, setTableData] = React.useState([]);
+	var [count, setCount] = React.useState(0);
+	var [allTableData, setAllTableData] = React.useState([]);
+	var [shipTableData, setShipTableData] = React.useState([]);
+	var [buyTableData, setBuyTableData] = React.useState([]);
 	const accounts = props.accounts;
 	const supplyChainContract = props.supplyChainContract;
 	React.useEffect(() => {
-		supplyChainContract.methods
-			.fetchProductCount()
-			.call({ from: accounts[0], gas: 100000 })
-			.then((response) => {
-				console.log(response);
-			});
-		supplyChainContract.methods
-			.fetchProduct(1)
-			.call({ from: accounts[0], gas: 100000 })
-			.then((response) => {
-				var temp = [];
-				temp.push(response);
-				setTableData(temp);
-				console.log(temp);
-			});
-		supplyChainContract.methods
-			.fetchProductState(1)
-			.call({ from: accounts[0], gas: 100000 })
-			.then((response) => {
-				console.log(response);
-			});
-	}, []);
+		(async () => {
+			const cnt = await supplyChainContract.methods.fetchProductCount().call({ from: accounts[0], gas: 100000 });
+			setCount(cnt);
+		})();
+
+
+		(async () => {
+			const allArr = [];
+			const shipArr = [];
+			const buyArr = [];
+
+			for (var i = 1; i <= count; i++) {
+				const prodState = await supplyChainContract.methods
+					.fetchProductState(i)
+					.call({ from: accounts[0], gas: 100000 });
+
+				if (prodState == '0') {
+					const a = await supplyChainContract.methods.fetchProduct(i).call({ from: accounts[0], gas: 100000 });
+					allArr.push(a)
+				} else if (prodState == 1) {
+					const a = await supplyChainContract.methods.fetchProduct(i).call({ from: accounts[0], gas: 100000 });
+					shipArr.push(a)
+				}
+			}
+
+			setAllTableData(allArr);
+			setShipTableData(shipArr);
+		})();
+	}, [count]);
 
 	return (
 		<div>
@@ -120,12 +130,12 @@ export default function ManufacturerScreen(props) {
 					) : null}
 					{state == 1 ? (
 						<Grid item xs={12}>
-							<ShipProduct data={tableData} />
+							<ShipProduct data={shipTableData} />
 						</Grid>
 					) : null}
 					{state == 2 ? (
 						<Grid item xs={12}>
-							<ProductTable data={tableData} />
+							<ProductTable data={allTableData} />
 						</Grid>
 					) : null}
 				</Grid>
