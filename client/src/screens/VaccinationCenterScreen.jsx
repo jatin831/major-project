@@ -40,6 +40,7 @@ export default function VaccinationCenterScreen(props) {
 	var [state, setCurState] = React.useState(0);
 	var [count, setCount] = React.useState(0);
 	var [buyTableData, setBuyTableData] = React.useState([]);
+	var [allTableData, setAllTableData] = React.useState([]);
 	var [receiveTableData, setReceiveTableData] = React.useState([]);
 	
 	const accounts = props.accounts;
@@ -70,6 +71,7 @@ export default function VaccinationCenterScreen(props) {
 			(async () => {
 			const buyArr = []; // 3
 			const receiveArr = []; // 7
+			const allArr = [];
 			
 
 			for (var i = 1; i < count; i++) {
@@ -88,10 +90,16 @@ export default function VaccinationCenterScreen(props) {
 						.fetchProduct(i)
 						.call({ from: accounts[0], gas: 100000 });
 					receiveArr.push(a);
-				} 
+				} else if(prodState == "8") {
+					const a = await supplyChainContract.methods
+						.fetchProduct(i)
+						.call({ from: accounts[0], gas: 100000 });
+					allArr.push(a);
+				}
 			}
 
 			setBuyTableData(buyArr);
+			setAllTableData(allArr);
 			setReceiveTableData(receiveArr);
 		})();
 	}, [count]);
@@ -135,15 +143,15 @@ export default function VaccinationCenterScreen(props) {
 							Receive Product
 						</Button>
 						&nbsp; &nbsp;
-						{/* <Button
+						<Button
 							variant="contained"
 							color="secondary"
 							onClick={() => {
 								setCurState(2);
 							}}
 						>
-						 Received Products
-						</Button> */}
+						 All Products
+						</Button>
 						&nbsp; &nbsp;
 						<Button
 							variant="contained"
@@ -173,12 +181,11 @@ export default function VaccinationCenterScreen(props) {
 								supplyChainContract={supplyChainContract}/>
 						</Grid>
 					) : null} 
-					{/* {state == 2 ? (
+					{state == 2 ? (
 						<Grid item xs={12}>
-							<ShipProductByManufacturer data={shipTableData} accounts={accounts}
-								supplyChainContract={supplyChainContract}/>
+							<ProductTable data={allTableData} />
 						</Grid>
-					) : null}  */}
+					) : null}
 				</Grid>
 			</div>
 		</div>

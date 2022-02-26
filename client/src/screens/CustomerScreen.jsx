@@ -12,8 +12,8 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import { BuyProduct } from "./BuyProduct";
-import { ShipProductByManufacturer } from "./ShipProductByManufacturer";
 import { ReceiveProductByDistributor } from "./ReceiveProductByDistributor";
+import { ShipProductByDistributor } from "./ShipProductByDistributor";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -182,7 +182,7 @@ export default function CustomerScreen(props) {
 					) : null} 
 					{state == 2 ? (
 						<Grid item xs={12}>
-							<ShipProductByManufacturer data={shipTableData} accounts={accounts}
+							<ShipProductByDistributor data={shipTableData} accounts={accounts}
 								supplyChainContract={supplyChainContract}/>
 						</Grid>
 					) : null} 
