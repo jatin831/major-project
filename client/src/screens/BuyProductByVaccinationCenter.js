@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export function BuyProduct(props) {
+export function BuyProductByVaccinationCenter(props) {
 	console.log(props.data[0]);
 
 	// var [tableData, setTableData] = React.useState([]);
@@ -35,7 +35,7 @@ export function BuyProduct(props) {
 		// console.log("calledddddddddddddddddddd");
 
 		await supplyChainContract.methods
-			.purchaseByDistributor(id)
+			.purchaseByVaccinationCenter(id)
 			.send({ from: accounts[0], gas: 10000000 });
 
 		// setCount(0);

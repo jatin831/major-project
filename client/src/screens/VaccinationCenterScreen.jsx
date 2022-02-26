@@ -12,8 +12,9 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import { BuyProduct } from "./BuyProduct";
-import { ShipProductByDelivery } from "./ShipProductByDelivery";
-import { ReceiveProductByDelivery } from "./ReceiveProductByDelivery";
+import { ShipProductByManufacturer } from "./ShipProductByManufacturer";
+import { ReceiveProductByVaccinationCenter } from "./ReceiveProductByVaccinationCenter";
+import { BuyProductByVaccinationCenter } from "./BuyProductByVaccinationCenter";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function DeliveryScreen(props) {
+export default function VaccinationCenterScreen(props) {
 	// const classes = useStyles();
 	// var [state, setCurState] = React.useState(0);
 	// var [tableData, setTableData] = React.useState([]);
@@ -38,7 +39,7 @@ export default function DeliveryScreen(props) {
 	const classes = useStyles();
 	var [state, setCurState] = React.useState(0);
 	var [count, setCount] = React.useState(0);
-	var [shipTableData, setShipTableData] = React.useState([]);
+	var [buyTableData, setBuyTableData] = React.useState([]);
 	var [receiveTableData, setReceiveTableData] = React.useState([]);
 	
 	const accounts = props.accounts;
@@ -67,8 +68,8 @@ export default function DeliveryScreen(props) {
 		})();
 
 			(async () => {
-			const shipArr = []; // 6
-			const receiveArr = []; // 5
+			const buyArr = []; // 3
+			const receiveArr = []; // 7
 			
 
 			for (var i = 1; i < count; i++) {
@@ -77,12 +78,12 @@ export default function DeliveryScreen(props) {
 					.call({ from: accounts[0], gas: 100000 });
 				console.log(prodState);
 
-				if (prodState == "6") {
+				if (prodState == "3") {
 					const a = await supplyChainContract.methods
 						.fetchProduct(i)
 						.call({ from: accounts[0], gas: 100000 });
-					shipArr.push(a);
-				} else if (prodState == "5") {
+					buyArr.push(a);
+				} else if (prodState == "7") {
 					const a = await supplyChainContract.methods
 						.fetchProduct(i)
 						.call({ from: accounts[0], gas: 100000 });
@@ -90,7 +91,7 @@ export default function DeliveryScreen(props) {
 				} 
 			}
 
-			setShipTableData(shipArr);
+			setBuyTableData(buyArr);
 			setReceiveTableData(receiveArr);
 		})();
 	}, [count]);
@@ -101,7 +102,7 @@ export default function DeliveryScreen(props) {
 				<AppBar position="static">
 					<Toolbar>
 						<Typography variant="h6" className={classes.title}>
-							Delivery Hub
+							Vaccination Center
 						</Typography>
 						{/* <Button
 							variant="contained"
@@ -120,7 +121,7 @@ export default function DeliveryScreen(props) {
 								setCurState(0);
 							}}
 						>
-							Ship Product
+							Buy Product
 						</Button>
 						
 						&nbsp; &nbsp;
@@ -162,13 +163,13 @@ export default function DeliveryScreen(props) {
 				<Grid container spacing={2}>
 					{state == 0 ? (
 						<Grid item xs={12}>
-							<ShipProductByDelivery data={shipTableData} accounts={accounts}
+							<BuyProductByVaccinationCenter data={buyTableData} accounts={accounts}
                 supplyChainContract={supplyChainContract} />
 						</Grid>
 					) : null}
 					{state == 1 ? (
 						<Grid item xs={12}>
-							<ReceiveProductByDelivery data={receiveTableData} accounts={accounts}
+							<ReceiveProductByVaccinationCenter data={receiveTableData} accounts={accounts}
 								supplyChainContract={supplyChainContract}/>
 						</Grid>
 					) : null} 
@@ -195,6 +196,25 @@ export default function DeliveryScreen(props) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import React from 'react';
 // import AppBar from '@material-ui/core/AppBar';
 // import Toolbar from '@material-ui/core/Toolbar';
@@ -205,8 +225,10 @@ export default function DeliveryScreen(props) {
 // import MenuIcon from '@material-ui/icons/Menu';
 // import {Link} from "react-router-dom";
 // import "../css/Distributorscreen.css";
+// import { BuyProduct } from './BuyProduct';
+// import { Grid } from "@material-ui/core";
 // const date=new Date();
-// const d=date.getFullYear();
+// const d = date.getFullYear();
 
 // const useStyles = makeStyles((theme) => ({
 //     root: {
@@ -234,60 +256,123 @@ export default function DeliveryScreen(props) {
 //                         Vaccine Distribution System
 //                     </Typography>
 //                     <Button variant="contained" color="primary"  component={Link} to="/">
-//                         Delivery
+//                         Distributer
 //                     </Button>
 //                     <Button variant="contained" color="primary" component={Link} to="/">
-//                         Buy Product
+//                         Purchase Product
 //                     </Button>
 //                     <Button variant="contained" color="primary" component={Link} to="/">
 //                         Receive Product
 //                     </Button>
 //                     <Button variant="contained" color="primary" component={Link} to="/">
-//                         Ship   Product
+//                         Your  Product
 //                     </Button>
 //                 </Toolbar>
 //             </AppBar>
 //         </div>
 //     )
 // }
-// function Ship(){
+// function Buy(){
 //     return (
-//         <Button variant="contained" color="primary" component={Link} to="/delivery/ship">
-//         Ship
+//         <Button variant="contained" color="primary"
+//             // component={Link} to="/distributor/buy"
+//         >
+//         Buy
 //         </Button>
 //     )
 // }
-// function DeliveryTable(prob) {
+// function DistributionTable(props) {
+//     const classes = useStyles();
+// 	// var [state, setCurState] = React.useState(0);
+// 	var [tableData, setTableData] = React.useState([]);
+// 	const accounts = props.accounts;
+// 	const supplyChainContract = props.supplyChainContract;
+// 	React.useEffect(() => {
+// 		supplyChainContract.methods
+// 			.fetchProduct(1)
+// 			.call({ from: accounts[0], gas: 100000 })
+// 			.then((response) => {
+// 				var temp = [];
+// 				temp.push(response);
+// 				setTableData(temp);
+// 				console.log(temp);
+// 			});
+// 	}, []);
 //     return (
-//       <div className="Distributor">
-//         <table>
-//           <tr>
-//             <th>Universal ID</th>
-//             <th>Product Code</th>
-//             <th>Manufacture</th>
-//             <th>Manufacture Date</th>
-//             <th>Product Name </th>
-//             <th> Owner</th>
-//             <th>Ship </th>
-
-//           </tr>
-//          {/* adding data using loop */}
-//           {prob.data.map((val, key) => {
-//             return (
-//               <tr key={key}>
-//                 <td>{val.Universal_ID}</td>
-//                 <td>{val.Product_Code}</td>
-//                 <td>{val.Manufacture}</td>
-//                 <td>{val.Manufacture_Date}</td>
-//                 <td>{val.Product_Name}</td>
-//                 <td>{val.Owner}</td>
-//                 <td><Ship /></td>
-
-//               </tr>
-//             )
-//           })}
-//         </table>
-//       </div>
+//         		<div>
+// 			<div className={classes.root}>
+// 				{/* <AppBar position="static">
+// 					<Toolbar>
+// 						<Typography variant="h6" className={classes.title}>
+// 							Manufacturer
+// 						</Typography>
+// 						<Button
+// 							variant="contained"
+// 							color="secondary"
+// 							onClick={() => {
+// 								setCurState(0);
+// 							}}
+// 						>
+// 							Add Product
+// 						</Button>
+// 						&nbsp; &nbsp;
+// 						<Button
+// 							variant="contained"
+// 							color="secondary"
+// 							onClick={() => {
+// 								setCurState(1);
+// 							}}
+// 						>
+// 							Ship Product
+// 						</Button>
+// 						&nbsp; &nbsp;
+// 						<Button
+// 							variant="contained"
+// 							color="secondary"
+// 							onClick={() => {
+// 								setCurState(2);
+// 							}}
+// 						>
+// 							All Product
+// 						</Button>
+// 						&nbsp; &nbsp;
+// 						<Button
+// 							variant="contained"
+// 							color="secondary"
+// 							component={Link}
+// 							to="/home"
+// 						>
+// 							Home
+// 						</Button>
+// 					</Toolbar>
+// 				</AppBar> */}
+// 			</div>
+// 			<div className="form-container">
+// 				{/* <Button variant="contained" color="primary" onClick={() => { setProductForm(true) }}>
+//             Add Product
+//         </Button> */}
+// 				<Grid container spacing={2}>
+// 					{/* {state == 0 ? (
+// 						<Grid item xs={12}>
+// 							<AddProductForm
+// 								accounts={accounts}
+// 								supplyChainContract={supplyChainContract}
+// 							/>
+// 						</Grid>
+// 					) : null}
+// 					{state == 1 ? ( */}
+// 						<Grid item xs={12}>
+// 							<BuyProduct data={tableData} />
+// 						</Grid>
+// 					{/* ) : null}
+// 					{state == 2 ? (
+// 						<Grid item xs={12}>
+// 							<ProductTable data={tableData} />
+// 						</Grid>
+// 					) : null} */}
+// 				</Grid>
+// 			</div>
+// 		</div>
 //     );
 //   }
 
@@ -298,9 +383,9 @@ export default function DeliveryScreen(props) {
 //     Manufacture_Date:"Date",
 //     Product_Name:"Product Name",
 //     Owner:"Owner",
-//     ship:true}];
+//     Buy:true}];
 
-// function DeliveryScreen(){
-//     return (<div><Navbar /><DeliveryTable data={data} /><footer>Copyright @vaccine distributtion {d}</footer></div>)
+// function CustomerScreen(){
+//     return (<div><Navbar /><h1>Purchase Product </h1><DistributionTable data={data} /><footer>Copyright @vaccine distributtion {d}</footer></div>)
 // }
-// export default DeliveryScreen;
+// export default CustomerScreen;

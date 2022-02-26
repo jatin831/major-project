@@ -12,6 +12,8 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import { BuyProduct } from "./BuyProduct";
+import { ShipProductByManufacturer } from "./ShipProductByManufacturer";
+import { ReceiveProductByDistributor } from "./ReceiveProductByDistributor";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -27,23 +29,79 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CustomerScreen(props) {
+	// const classes = useStyles();
+	// var [state, setCurState] = React.useState(0);
+	// var [tableData, setTableData] = React.useState([]);
+	// const accounts = props.accounts;
+	// const supplyChainContract = props.supplyChainContract;
+
 	const classes = useStyles();
 	var [state, setCurState] = React.useState(0);
-	var [tableData, setTableData] = React.useState([]);
+	var [count, setCount] = React.useState(0);
+	var [buyTableData, setBuyTableData] = React.useState([]);
+	var [receiveTableData, setReceiveTableData] = React.useState([]);
+	var [shipTableData, setShipTableData] = React.useState([]);
+	
 	const accounts = props.accounts;
 	const supplyChainContract = props.supplyChainContract;
-    React.useEffect(() => {
-        console.log("fetchhhhhhhhhhhhhhh");
-		supplyChainContract.methods
-			.fetchProduct(1)
-			.call({ from: accounts[0], gas: 10000000 })
-			.then((response) => {
-				var temp = [];
-				temp.push(response);
-				setTableData(temp);
-				console.log(temp);
-			});
-	}, []);
+
+    // React.useEffect(() => {
+    //     console.log("fetchhhhhhhhhhhhhhh");
+		// supplyChainContract.methods
+		// 	.fetchProduct(1)
+		// 	.call({ from: accounts[0], gas: 10000000 })
+		// 	.then((response) => {
+		// 		var temp = [];
+		// 		temp.push(response);
+		// 		setTableData(temp);
+		// 		console.log(temp);
+		// 	});
+		// }, []);
+	
+	
+		React.useEffect(() => {
+		(async () => {
+			const cnt = await supplyChainContract.methods
+				.fetchProductCount()
+				.call({ from: accounts[0], gas: 100000 });
+			setCount(cnt);
+		})();
+
+			(async () => {
+			const buyArr = []; // 0
+			const receiveArr = []; // 2
+			const shipArr = []; // 4
+			
+
+			for (var i = 1; i < count; i++) {
+				const prodState = await supplyChainContract.methods
+					.fetchProductState(i)
+					.call({ from: accounts[0], gas: 100000 });
+				console.log(prodState);
+
+				if (prodState == "0") {
+					const a = await supplyChainContract.methods
+						.fetchProduct(i)
+						.call({ from: accounts[0], gas: 100000 });
+					buyArr.push(a);
+				} else if (prodState == "2") {
+					const a = await supplyChainContract.methods
+						.fetchProduct(i)
+						.call({ from: accounts[0], gas: 100000 });
+					receiveArr.push(a);
+				} else if (prodState == "4") {
+					const a = await supplyChainContract.methods
+						.fetchProduct(i)
+						.call({ from: accounts[0], gas: 100000 });
+					shipArr.push(a);
+				}
+			}
+
+			setBuyTableData(buyArr);
+			setReceiveTableData(receiveArr);
+			setShipTableData(shipArr);
+		})();
+	}, [count]);
 
 	return (
 		<div>
@@ -51,9 +109,9 @@ export default function CustomerScreen(props) {
 				<AppBar position="static">
 					<Toolbar>
 						<Typography variant="h6" className={classes.title}>
-							Manufacturer
+							Distributor
 						</Typography>
-						<Button
+						{/* <Button
 							variant="contained"
 							color="secondary"
 							onClick={() => {
@@ -61,16 +119,27 @@ export default function CustomerScreen(props) {
 							}}
 						>
 							Add Product
-						</Button>
+						</Button> */}
 						&nbsp; &nbsp;
 						<Button
+							variant="contained"
+							color="secondary"
+							onClick={() => {
+								setCurState(0);
+							}}
+						>
+							Buy Product
+						</Button>
+						
+						&nbsp; &nbsp;
+												<Button
 							variant="contained"
 							color="secondary"
 							onClick={() => {
 								setCurState(1);
 							}}
 						>
-							Ship Product
+							Receive Product
 						</Button>
 						&nbsp; &nbsp;
 						<Button
@@ -80,7 +149,7 @@ export default function CustomerScreen(props) {
 								setCurState(2);
 							}}
 						>
-							All Product
+							Ship Product
 						</Button>
 						&nbsp; &nbsp;
 						<Button
@@ -99,25 +168,24 @@ export default function CustomerScreen(props) {
             Add Product
         </Button> */}
 				<Grid container spacing={2}>
-					{/* {state == 0 ? (
+					{state == 0 ? (
 						<Grid item xs={12}>
-							<AddProductForm
-								accounts={accounts}
-								supplyChainContract={supplyChainContract}
-							/>
-						</Grid>
-					) : null}
-					{state == 1 ? ( */}
-						<Grid item xs={12}>
-							<BuyProduct data={tableData} accounts={accounts}
+							<BuyProduct data={buyTableData} accounts={accounts}
                 supplyChainContract={supplyChainContract} />
 						</Grid>
-					{/* ) : null}
+					) : null}
+					{state == 1 ? (
+						<Grid item xs={12}>
+							<ReceiveProductByDistributor data={receiveTableData} accounts={accounts}
+								supplyChainContract={supplyChainContract}/>
+						</Grid>
+					) : null} 
 					{state == 2 ? (
 						<Grid item xs={12}>
-							<ProductTable data={tableData} />
+							<ShipProductByManufacturer data={shipTableData} accounts={accounts}
+								supplyChainContract={supplyChainContract}/>
 						</Grid>
-					) : null} */}
+					) : null} 
 				</Grid>
 			</div>
 		</div>

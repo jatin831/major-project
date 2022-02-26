@@ -9,6 +9,19 @@ import { Link } from "react-router-dom";
 const date = new Date();
 const d = date.getFullYear();
 
+// function Ship() {
+// 	return (
+// 		<Button
+// 			variant="contained"
+// 			color="primary"
+// 			component={Link}
+// 			to="/delivery/ship"
+// 		>
+// 			Ship
+// 		</Button>
+// 	);
+// }
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
@@ -22,20 +35,20 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export function BuyProduct(props) {
+export function ReceiveProductByDistributor(props) {
 	console.log(props.data[0]);
 
 	// var [tableData, setTableData] = React.useState([]);
 	const accounts = props.accounts;
 	const supplyChainContract = props.supplyChainContract;
 
-	const handleBuyButton = async (id) => {
+	const handleReceiveButton = async (id) => {
 		// console.log("calledddddddddddddddddddd");
 		// console.log(supplyChainContract);
 		// console.log("calledddddddddddddddddddd");
 
 		await supplyChainContract.methods
-			.purchaseByDistributor(id)
+			.receiveByDistributor(id)
 			.send({ from: accounts[0], gas: 10000000 });
 
 		// setCount(0);
@@ -50,7 +63,7 @@ export function BuyProduct(props) {
 					<th>Price</th>
 					<th>Product Category </th>
 					<th>Manufacture</th>
-					<th>Buy</th>
+					<th>Ship</th>
 				</tr>
 				{/* adding data using loop */}
 				{props.data.map((s) => {
@@ -61,13 +74,16 @@ export function BuyProduct(props) {
 							<td>{s[2]}</td>
 							<td>{s[3]}</td>
 							<td>{s[4]}</td>
+							{/* <td>
+								<Ship />
+							</td> */}
 							<td>
 								<Button
 									variant="contained"
 									color="secondary"
-									onClick={() => handleBuyButton(s[1])}
+									onClick={() => handleReceiveButton(s[1])}
 								>
-									Buy
+									Receive
 								</Button>
 								{/* <Buy onClick={() => handleBuyButton(s[0])} /> */}
 							</td>
