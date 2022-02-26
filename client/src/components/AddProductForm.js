@@ -55,8 +55,8 @@ export default function AddProductForm(props) {
 			setfvalid(false);
 			await supplyChainContract.methods
 				.manufactureProduct(
-					manuForm.manufacturerLongitude,
-					manuForm.manufacturerLatitude,
+					// manuForm.manufacturerLongitude,
+					// manuForm.manufacturerLatitude,
 					manuForm.productName,
 					parseInt(manuForm.productPrice),
 					manuForm.productCategory

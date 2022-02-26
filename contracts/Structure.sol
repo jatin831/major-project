@@ -1,7 +1,6 @@
 pragma solidity >=0.4.21 <8.10.0;
 
 library Structure {
-
     enum State {
         Manufactured,
         PurchasedByDistributor,
@@ -56,7 +55,7 @@ library Structure {
         address owner;
         ProductDetails productdet;
         State productState;
-        ManufactureDetails manufacturer;    
+        ManufactureDetails manufacturer;
         DistributorDetails distributor;
         DeliveryHubDetails deliveryhub;
         VaccinationCenterDetails vaccinationcenter;
