@@ -51,9 +51,9 @@ export default function CustomerScreen(props) {
 				<AppBar position="static">
 					<Toolbar>
 						<Typography variant="h6" className={classes.title}>
-							Manufacturer
+							Distributor
 						</Typography>
-						<Button
+						{/* <Button
 							variant="contained"
 							color="secondary"
 							onClick={() => {
@@ -61,6 +61,16 @@ export default function CustomerScreen(props) {
 							}}
 						>
 							Add Product
+						</Button> */}
+						&nbsp; &nbsp;
+						<Button
+							variant="contained"
+							color="secondary"
+							onClick={() => {
+								setCurState(0);
+							}}
+						>
+							Buy Product
 						</Button>
 						&nbsp; &nbsp;
 						<Button
@@ -71,16 +81,6 @@ export default function CustomerScreen(props) {
 							}}
 						>
 							Ship Product
-						</Button>
-						&nbsp; &nbsp;
-						<Button
-							variant="contained"
-							color="secondary"
-							onClick={() => {
-								setCurState(2);
-							}}
-						>
-							All Product
 						</Button>
 						&nbsp; &nbsp;
 						<Button
@@ -99,25 +99,17 @@ export default function CustomerScreen(props) {
             Add Product
         </Button> */}
 				<Grid container spacing={2}>
-					{/* {state == 0 ? (
-						<Grid item xs={12}>
-							<AddProductForm
-								accounts={accounts}
-								supplyChainContract={supplyChainContract}
-							/>
-						</Grid>
-					) : null}
-					{state == 1 ? ( */}
+					{state == 0 ? (
 						<Grid item xs={12}>
 							<BuyProduct data={tableData} accounts={accounts}
                 supplyChainContract={supplyChainContract} />
 						</Grid>
-					{/* ) : null}
-					{state == 2 ? (
+					) : null}
+					{state == 1 ? (
 						<Grid item xs={12}>
 							<ProductTable data={tableData} />
 						</Grid>
-					) : null} */}
+					) : null} 
 				</Grid>
 			</div>
 		</div>
