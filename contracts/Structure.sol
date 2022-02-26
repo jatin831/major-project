@@ -33,7 +33,7 @@ library Structure {
     }
 
     struct DeliveryHubDetails {
-        address deliveryHub;
+        address deliveryhub;
         string deliveryHubLongitude;
         string deliveryHubLatitude;
     }
