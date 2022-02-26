@@ -11,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
-import { ShipProduct } from "./ShipProduct";
+import { ShipProductByManufacturer } from "./ShipProductByManufacturer";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -37,10 +37,11 @@ export default function ManufacturerScreen(props) {
 	const supplyChainContract = props.supplyChainContract;
 	React.useEffect(() => {
 		(async () => {
-			const cnt = await supplyChainContract.methods.fetchProductCount().call({ from: accounts[0], gas: 100000 });
+			const cnt = await supplyChainContract.methods
+				.fetchProductCount()
+				.call({ from: accounts[0], gas: 100000 });
 			setCount(cnt);
 		})();
-
 
 		(async () => {
 			const allArr = [];
@@ -51,13 +52,18 @@ export default function ManufacturerScreen(props) {
 				const prodState = await supplyChainContract.methods
 					.fetchProductState(i)
 					.call({ from: accounts[0], gas: 100000 });
+				console.log(prodState);
 
-				if (prodState == '0') {
-					const a = await supplyChainContract.methods.fetchProduct(i).call({ from: accounts[0], gas: 100000 });
-					allArr.push(a)
-				} else if (prodState == '1') {
-					const a = await supplyChainContract.methods.fetchProduct(i).call({ from: accounts[0], gas: 100000 });
-					shipArr.push(a)
+				if (prodState == "0") {
+					const a = await supplyChainContract.methods
+						.fetchProduct(i)
+						.call({ from: accounts[0], gas: 100000 });
+					allArr.push(a);
+				} else if (prodState == "1") {
+					const a = await supplyChainContract.methods
+						.fetchProduct(i)
+						.call({ from: accounts[0], gas: 100000 });
+					shipArr.push(a);
 				}
 			}
 
@@ -130,7 +136,12 @@ export default function ManufacturerScreen(props) {
 					) : null}
 					{state == 1 ? (
 						<Grid item xs={12}>
-							<ShipProduct data={shipTableData} />
+							{/* <ShipProduct data={shipTableData} /> */}
+							<ShipProductByManufacturer
+								data={shipTableData}
+								accounts={accounts}
+								supplyChainContract={supplyChainContract}
+							/>
 						</Grid>
 					) : null}
 					{state == 2 ? (

@@ -35,20 +35,20 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export function ShipProduct(props) {
+export function ReceiveProductByDistributor(props) {
 	console.log(props.data[0]);
 
 	// var [tableData, setTableData] = React.useState([]);
 	const accounts = props.accounts;
 	const supplyChainContract = props.supplyChainContract;
 
-	const handleShipButton = async (id) => {
+	const handleReceiveButton = async (id) => {
 		// console.log("calledddddddddddddddddddd");
 		// console.log(supplyChainContract);
 		// console.log("calledddddddddddddddddddd");
 
 		await supplyChainContract.methods
-			.purchaseByDistributor(id)
+			.receiveByDistributor(id)
 			.send({ from: accounts[0], gas: 10000000 });
 
 		// setCount(0);
@@ -81,9 +81,9 @@ export function ShipProduct(props) {
 								<Button
 									variant="contained"
 									color="secondary"
-									onClick={() => handleShipButton(s[0])}
+									onClick={() => handleReceiveButton(s[1])}
 								>
-									Ship
+									Receive
 								</Button>
 								{/* <Buy onClick={() => handleBuyButton(s[0])} /> */}
 							</td>

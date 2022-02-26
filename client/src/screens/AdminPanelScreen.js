@@ -102,7 +102,7 @@ function AdminPanelScreen(props) {
 				.then(console.log);
 		} else if (role == "3") {
 			await supplyChainContract.methods
-				.addDeliveryRole(address)
+				.addDeliveryHubRole(address)
 				.send({ from: accounts[0], gas: 100000 })
 				.then(console.log);
 		} else {
@@ -186,9 +186,7 @@ function AdminPanelScreen(props) {
 				<Button
 					variant="contained"
 					color="primary"
-					onClick={
-						handleAddRole
-					}
+					onClick={handleAddRole}
 					style={{ width: "20%", marginLeft: "10px" }}
 				>
 					Add Member
