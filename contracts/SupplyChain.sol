@@ -234,7 +234,7 @@ contract SupplyChain {
     ) public shippedByDistributor(_uid) {
         require(hasDeliveryHubRole(msg.sender));
         products[_uid].owner = msg.sender;
-        products[_uid].deliveryhub.deliveryHub = msg.sender;
+        products[_uid].deliveryhub.deliveryhub = msg.sender;
         // products[_uid].deliveryhub.deliveryHubLongitude = deliveryHubLongitude;
         // products[_uid].deliveryhub.deliveryHubLatitude = deliveryHubLatitude;
         products[_uid].productState = Structure.State.ReceivedByDeliveryHub;
@@ -284,22 +284,21 @@ contract SupplyChain {
         return products[_uid].productState;
     }
 
-    function fetchProduct(uint256 _uid) public view returns (uint256,
+    function fetchProduct(uint256 _uid) public view returns (
+        address,
+    uint256,
     string memory,
     uint256,
     string memory,
+    Structure.State,
     address,
-    string memory,
-    string memory,
+    address,
+    address,
     address
     ) {
         Structure.Product storage product = products[_uid];
-        return ( product.productdet.productid, product.productdet.productName, product.productdet.productPrice, product.productdet.productCategory, product.manufacturer.manufacturer,
-<<<<<<< HEAD
-        product.manufacturer.manufacturerLongitude, product.manufacturer.manufacturerLatitude,product.distributor.distributor);
-=======
-        product.manufacturer.manufacturerLongitude, product.manufacturer.manufacturerLatitude, product.distributor.distributor);
->>>>>>> origin/master
+        return ( product.owner, product.productdet.productid, product.productdet.productName, product.productdet.productPrice, product.productdet.productCategory, product.productState,  product.manufacturer.manufacturer,
+         product.distributor.distributor, product.deliveryhub.deliveryhub, product.vaccinationcenter.vaccinationcenter);
     }
 
 }
