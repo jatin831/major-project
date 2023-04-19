@@ -49,7 +49,7 @@ export function ShipProductByManufacturer(props) {
 
 		await supplyChainContract.methods
 			.shipToDistributor(id)
-			.send({ from: accounts[0], gas: 10000000 });
+			.send({ from: accounts[0], gas: 1000000 });
 
 		// setCount(0);
 	};

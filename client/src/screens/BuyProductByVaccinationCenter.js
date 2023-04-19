@@ -36,7 +36,7 @@ export function BuyProductByVaccinationCenter(props) {
 
 		await supplyChainContract.methods
 			.purchaseByVaccinationCenter(id)
-			.send({ from: accounts[0], gas: 10000000 });
+			.send({ from: accounts[0], gas: 1000000 });
 
 		// setCount(0);
 	};

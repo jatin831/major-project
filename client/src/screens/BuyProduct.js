@@ -36,7 +36,7 @@ export function BuyProduct(props) {
 
 		await supplyChainContract.methods
 			.purchaseByDistributor(id)
-			.send({ from: accounts[0], gas: 1000000 });
+			.send({ from: accounts[0], gas: 1000000000 });
 
 		// setCount(0);
 	};

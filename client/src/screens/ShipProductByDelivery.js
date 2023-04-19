@@ -43,13 +43,10 @@ export function ShipProductByDelivery(props) {
 	const supplyChainContract = props.supplyChainContract;
 
 	const handleShipButton = async (id) => {
-		// console.log("calledddddddddddddddddddd");
-		// console.log(supplyChainContract);
-		// console.log("calledddddddddddddddddddd");
 
 		await supplyChainContract.methods
 			.shipByDeliveryHub(id)
-			.send({ from: accounts[0], gas: 10000000 });
+			.send({ from: accounts[0], gas: 1000000 });
 
 		// setCount(0);
 	};

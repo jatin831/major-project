@@ -64,7 +64,7 @@ export default function VaccinationCenterScreen(props) {
 		(async () => {
 			const cnt = await supplyChainContract.methods
 				.fetchProductCount()
-				.call({ from: accounts[0], gas: 100000 });
+				.call({ from: accounts[0], gas: 1000000 });
 			setCount(cnt);
 		})();
 
