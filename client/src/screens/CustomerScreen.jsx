@@ -65,6 +65,7 @@ export default function CustomerScreen(props) {
 				.fetchProductCount()
 				.call({ from: accounts[0], gas: 100000 });
 			setCount(cnt);
+			console.log("cnt: ", cnt);
 		})();
 
 			(async () => {
@@ -77,7 +78,7 @@ export default function CustomerScreen(props) {
 				const prodState = await supplyChainContract.methods
 					.fetchProductState(i)
 					.call({ from: accounts[0], gas: 100000 });
-				console.log(prodState);
+				console.log("prodState: ", prodState);
 
 				if (prodState == "0") {
 					const a = await supplyChainContract.methods

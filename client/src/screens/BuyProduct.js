@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function BuyProduct(props) {
-	console.log(props.data[0]);
+	// console.log(props.data[0]);
 
 	// var [tableData, setTableData] = React.useState([]);
 	const accounts = props.accounts;
@@ -36,7 +36,7 @@ export function BuyProduct(props) {
 
 		await supplyChainContract.methods
 			.purchaseByDistributor(id)
-			.send({ from: accounts[0], gas: 10000000 });
+			.send({ from: accounts[0], gas: 1000000 });
 
 		// setCount(0);
 	};

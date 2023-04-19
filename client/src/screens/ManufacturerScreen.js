@@ -35,13 +35,18 @@ export default function ManufacturerScreen(props) {
 	var [buyTableData, setBuyTableData] = React.useState([]);
 	const accounts = props.accounts;
 	const supplyChainContract = props.supplyChainContract;
+
 	React.useEffect(() => {
 		(async () => {
 			const cnt = await supplyChainContract.methods
 				.fetchProductCount()
 				.call({ from: accounts[0], gas: 100000 });
 			setCount(cnt);
+			console.log("cnt: ", cnt);
 		})();
+
+		console.log("product count: ", count);
+		console.log("account: ", accounts[0]);
 
 		(async () => {
 			const allArr = [];
