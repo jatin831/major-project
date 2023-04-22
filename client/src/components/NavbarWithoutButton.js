@@ -30,7 +30,7 @@ export default function Navbar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        Vaccine Distribution System
+                        Medicine Distribution System
                     </Typography>
                 </Toolbar>
             </AppBar>

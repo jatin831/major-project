@@ -8,7 +8,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import ManufacturerScreen from "./screens/ManufacturerScreen";
 import CustomerScreen from "./screens/CustomerScreen";
 import DeliveryScreen from "./screens/DeliveryScreen";
-import VaccinationCenterScreen from "./screens/VaccinationCenterScreen";
+import RetailerScreen from "./screens/RetailerScreen";
 
 class App extends Component {
 	state = {
@@ -102,8 +102,8 @@ class App extends Component {
 								supplyChainContract={this.state.contract}
 							/>
 						</Route>
-						<Route exact path="/vaccinationCenter">
-							<VaccinationCenterScreen
+						<Route exact path="/retailer">
+							<RetailerScreen
 								accounts={this.state.accounts}
 								supplyChainContract={this.state.contract}
 							/>

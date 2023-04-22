@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import "../css/HomeScreen.css";
-import HomeScreenImage from "../assets/HomepageImage.jpg";
+import HomeScreenImage from "../assets/HomepageImg.jpg";
 import ManufacturerImage from "../assets/Manufacturer.jpg";
 import DistributorImage from "../assets/Distributer.png";
 import DeliveryImage from "../assets/Delivery.jpg";
-import VaccinationCenterImage from "../assets/center.jpg";
+import RetailerImage from "../assets/Retailer.jpg";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ export default function HomeScreen() {
 			<div className="homepage-container">
 				<Grid container style={{}}>
 					<Grid item xs={5}>
-						<img src={HomeScreenImage} style={{ borderRadius: "25px" }}></img>
+						<img src={HomeScreenImage} style={{ height: "420px", borderRadius: "25px", width: "562px" }}></img>
 					</Grid>
 					<Grid
 						item
@@ -93,7 +93,7 @@ export default function HomeScreen() {
 										<Grid container>
 											<Grid item xs={12}>
 												<img
-													src={VaccinationCenterImage}
+													src={RetailerImage}
 													height={150}
 													width={150}
 												></img>
@@ -103,9 +103,9 @@ export default function HomeScreen() {
 													variant="contained"
 													color="primary"
 													component={Link}
-													to="/vaccinationCenter"
+													to="/retailer"
 												>
-													Vaccination Center
+													Retailer
 												</Button>
 											</Grid>
 										</Grid>

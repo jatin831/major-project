@@ -110,7 +110,7 @@ export default function VaccinationCenterScreen(props) {
 				<AppBar position="static">
 					<Toolbar>
 						<Typography variant="h6" className={classes.title}>
-							Vaccination Center
+							Retailer
 						</Typography>
 						{/* <Button
 							variant="contained"
@@ -260,7 +260,7 @@ export default function VaccinationCenterScreen(props) {
 //                         <MenuIcon />
 //                     </IconButton>
 //                     <Typography variant="h6" className={classes.title}>
-//                         Vaccine Distribution System
+//                         Medicine Distribution System
 //                     </Typography>
 //                     <Button variant="contained" color="primary"  component={Link} to="/">
 //                         Distributer
@@ -393,6 +393,6 @@ export default function VaccinationCenterScreen(props) {
 //     Buy:true}];
 
 // function CustomerScreen(){
-//     return (<div><Navbar /><h1>Purchase Product </h1><DistributionTable data={data} /><footer>Copyright @vaccine distributtion {d}</footer></div>)
+//     return (<div><Navbar /><h1>Purchase Product </h1><DistributionTable data={data} /><footer>Copyright @medicine distributtion {d}</footer></div>)
 // }
 // export default CustomerScreen;

@@ -43,9 +43,6 @@ export function ReceiveProductByVaccinationCenter(props) {
 	const supplyChainContract = props.supplyChainContract;
 
 	const handleReceiveButton = async (id) => {
-		// console.log("calledddddddddddddddddddd");
-		// console.log(supplyChainContract);
-		// console.log("calledddddddddddddddddddd");
 
 		await supplyChainContract.methods
 			.receiveByCustomer(id)

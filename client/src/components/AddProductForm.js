@@ -98,7 +98,7 @@ export default function AddProductForm(props) {
 	return (
 		<div>
 			<div className={classes.FormWrap}>
-				<h1 className={classes.pageHeading}>Add Vaccine Shipment</h1>
+				<h1 className={classes.pageHeading}>Add Medicine Shipment</h1>
 				<Grid container spacing={3}>
 					<Grid item xs={12}>
 						<TextField
@@ -151,7 +151,7 @@ export default function AddProductForm(props) {
 							variant="outlined"
 							value={manuForm.productName}
 							onChange={handleChangeManufacturerForm}
-							label="Vaccine Name"
+							label="Medicine Name"
 							style={{ width: "100%" }}
 						/>
 					</Grid>
@@ -162,7 +162,7 @@ export default function AddProductForm(props) {
 							variant="outlined"
 							value={manuForm.productCode}
 							onChange={handleChangeManufacturerForm}
-							label="Vaccine Code"
+							label="Medicine Code"
 							style={{ width: "100%" }}
 						/>
 					</Grid>
@@ -173,7 +173,7 @@ export default function AddProductForm(props) {
 							variant="outlined"
 							value={manuForm.productPrice}
 							onChange={handleChangeManufacturerForm}
-							label="Vaccine Price"
+							label="Medicine Price"
 							style={{ width: "100%" }}
 						/>
 					</Grid>
@@ -184,7 +184,7 @@ export default function AddProductForm(props) {
 							variant="outlined"
 							value={manuForm.productCategory}
 							onChange={handleChangeManufacturerForm}
-							label="Vaccine Category"
+							label="Medicine Category"
 							style={{ width: "100%" }}
 						/>
 					</Grid>
@@ -214,7 +214,7 @@ export default function AddProductForm(props) {
 						severity="success"
 						sx={{ width: "100%" }}
 					>
-						Vaccine Added Successfully!
+						Medicine Added Successfully!
 					</Alert>
 				</Snackbar>
 			</div>

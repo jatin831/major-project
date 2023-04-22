@@ -26092,12 +26092,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xB3599A153CEE99858b0b538c10F2FD8F86CeCd33",
-      "transactionHash": "0x91d9d29b2f3cc26ad2029ba5e189f0cdf347f43e987faa3750167b4cf2ce976f"
+      "address": "0xB8D1A770ec51027491543ad0af83658eD13B22BD",
+      "transactionHash": "0x992d1175fb36a6c1cd939ab088b14d949f2b9323deac3d57702448fa7d72cd8e"
     }
   },
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-04-19T20:16:07.063Z",
+  "updatedAt": "2023-04-22T09:49:34.526Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },

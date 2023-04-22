@@ -958,12 +958,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xD13b461EedD2298896e0aB022cBAEdD7Daea9635",
-      "transactionHash": "0x8c2a2e4f5d100f485788af0d2f1b2b11e26e5fc1c873456bff9140633bf368e3"
+      "address": "0xa8E9Edd879139893804c8DEe433361f55375D538",
+      "transactionHash": "0x15169ebaee853d95d2a838781bf301efda29e3e1cb8d0bd9e0d6b87d6349b42d"
     }
   },
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-04-19T20:16:07.030Z",
+  "updatedAt": "2023-04-22T09:49:34.613Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },

@@ -178,7 +178,7 @@ function AdminPanelScreen(props) {
 						<MenuItem value={1}>Manufacturer</MenuItem>
 						<MenuItem value={2}>Distributor</MenuItem>
 						<MenuItem value={3}>Delivery</MenuItem>
-						<MenuItem value={4}>Vaccination Center</MenuItem>
+						<MenuItem value={4}>Retailer</MenuItem>
 					</Select>
 				</FormControl>
 

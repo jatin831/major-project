@@ -28,7 +28,7 @@ export default function Navbar() {
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                        Vaccine Distribution System
+                        Medicine Distribution System
                     </Typography>
                     <Button variant="contained" color="secondary" component={Link} to="/admin">
                         Admin Panel

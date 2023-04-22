@@ -231,7 +231,7 @@ export default function DeliveryScreen(props) {
 //                         <MenuIcon />
 //                     </IconButton>
 //                     <Typography variant="h6" className={classes.title}>
-//                         Vaccine Distribution System
+//                         Medicine Distribution System
 //                     </Typography>
 //                     <Button variant="contained" color="primary"  component={Link} to="/">
 //                         Delivery
@@ -301,6 +301,6 @@ export default function DeliveryScreen(props) {
 //     ship:true}];
 
 // function DeliveryScreen(){
-//     return (<div><Navbar /><DeliveryTable data={data} /><footer>Copyright @vaccine distributtion {d}</footer></div>)
+//     return (<div><Navbar /><DeliveryTable data={data} /><footer>Copyright @Medicine distributtion {d}</footer></div>)
 // }
 // export default DeliveryScreen;
